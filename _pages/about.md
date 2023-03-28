@@ -22,7 +22,7 @@ Currently, I am a research intern at the [AI&I Department, Mayo Clinic](https://
 
 My recent research focuses on **Multi-modal and Federated Learning for Biomedicine**, as well as efficient machine/deep learning system design, with the goal of **Accelerating Discovery to Delivery for Clinical Excellence**. Ultimately, my career goal is to develop trustworthy and reliable artificial general intelligence (AGI) systems for computational precision medicine and health.
 
-I have published approximately 20 research papers with total <a href='https://scholar.google.com/citations?user=XL1iKSEAAAAJ'><img src="https://img.shields.io/endpoint?url={{ url | url_encode }}&logo=Google%20Scholar&labelColor=f6f6f6&color=9cf&style=flat&label=citations"></a>).
+I have published approximately 20 research papers with total <a href='https://scholar.google.com/citations?user=XL1iKSEAAAAJ'><img src="https://img.shields.io/endpoint?url={{ url | url_encode }}&logo=Google%20Scholar&labelColor=f6f6f6&color=9cf&style=flat&label=citations"></a>.
 
 
 # 🔥 News
@@ -34,7 +34,10 @@ I have published approximately 20 research papers with total <a href='https://sc
 - *2022.08*: &nbsp; [Adversarial Attack and Defense on Graph Data: A Survey](https://ieeexplore.ieee.org/document/9878092) is accepted by TKDE.
 - *2022.06*: &nbsp; I'am honored to be the PC Member of FedGraph2022 @ CIKM22. We need your contributions!
 - *2022.05*: &nbsp; 🎉🎉 I work as Summer Research Intern for Knox - AI/Mobile/Privacy @ <img src='./images/logos/sra.png' style='height: 1.5em;'>.
-- *2022.02*: &nbsp; I'am honored to be invited to present at WSDM'22 FL4P-WSDM Workshop. [`slide`](https://drive.google.com/file/d/1_Eh9Zf8fICPFu1j1RTCjH7dQ0DIspSkw/view)
+- *2022.02*: &nbsp; I'am honored to be invited to present at WSDM'22 FL4P-WSDM Workshop. <a href='https://drive.google.com/file/d/1_Eh9Zf8fICPFu1j1RTCjH7dQ0DIspSkw/view'><img src="https://img.shields.io/badge/slide-<important>
+
+
+[`slide`](https://drive.google.com/file/d/1_Eh9Zf8fICPFu1j1RTCjH7dQ0DIspSkw/view)
 
 # 📝 Publications 
 
@@ -60,7 +63,7 @@ I have published approximately 20 research papers with total <a href='https://sc
 </div>
 </div>
 
-- ``TKDE`` [Adversarial Attack and Defense on Graph Data: A Survey](), Lichao Sun, Yingtong Dou, Carl Yang, **Kai Zhang**, Ji Wang, Philip S. Yu, Lifang He, Bo Li [![](https://img.shields.io/github/stars/safe-graph/graph-adversarial-learning-literature?style=social)](https://github.com/safe-graph/graph-adversarial-learning-literature)
+- (https://img.shields.io/badge/TKDE-blueviolet) [Adversarial Attack and Defense on Graph Data: A Survey](), Lichao Sun, Yingtong Dou, Carl Yang, **Kai Zhang**, Ji Wang, Philip S. Yu, Lifang He, Bo Li [![](https://img.shields.io/github/stars/safe-graph/graph-adversarial-learning-literature?style=social)](https://github.com/safe-graph/graph-adversarial-learning-literature)
 
 
 <!---
