@@ -17,10 +17,10 @@ redirect_from:
 
 <span class='anchor' id='about-me'></span>
 
-I am a second-year Ph.D. student at [Department of Computer Science & Engineering, Lehigh University](https://engineering.lehigh.edu/cse), advised by Prof. [Lichao Sun](https://lichao-sun.github.io). Previously, I was the research assistant at [Embry-Riddle Aeronautical University](https://daytonabeach.erau.edu/college-engineering/electrical-engineering-computer-science), aiming to analyze large-scale aviaiton-related data for effective flight scheduling under emergency.
-Now, I work at [AI&I Department, Mayo Clinic](https://www.mayo.edu/research/departments-divisions/artificial-intelligence-informatics/overview) <img src='./images/logos/mayo.png' style='height: 1.5em;'> as a research intern, working on Vision-Language Pre-training and Federated Learning for EHR. 
+I am a second-year Ph.D. student in the [Department of Computer Science & Engineering, Lehigh University](https://engineering.lehigh.edu/cse), where I am advised by Prof. [Lichao Sun](https://lichao-sun.github.io). During my time as a research assistant at Embry-Riddle Aeronautical University, I analyzed large-scale aviation-related data to inform flight scheduling during emergency situations. 
+Currently, I am a research intern at the [AI&I Department, Mayo Clinic](https://www.mayo.edu/research/departments-divisions/artificial-intelligence-informatics/overview) <img src='./images/logos/mayo.png' style='height: 1.5em;'>, where I am developing vision-language pre-training and federated learning algorithms for electronic health records (EHR).
 
-At present, I focus on **Multi-modal and Federated Learning for Biomedicine** as well as efficient machine/deep learning system design. My mid-term goal is to develop effective, efficient and privacy-aware algorithms for **Accelerating Discovery to Delivery for Clinical Excellence**. One of my career goals is to develop trustworthy and reliable artificial general intelligence (AGI) systems for computational precision medicine & health. 
+My recent research focuses on **Multi-modal and Federated Learning for Biomedicine**, as well as efficient machine/deep learning system design, with the goal of **Accelerating Discovery to Delivery for Clinical Excellence**. Ultimately, my career goal is to develop trustworthy and reliable artificial general intelligence (AGI) systems for computational precision medicine and health.
 
 I have published approximately 20 research papers with total <a href='https://scholar.google.com/citations?user=XL1iKSEAAAAJ'><img src="https://img.shields.io/endpoint?url={{ url | url_encode }}&logo=Google%20Scholar&labelColor=f6f6f6&color=9cf&style=flat&label=citations"></a>).
 
@@ -34,9 +34,20 @@ I have published approximately 20 research papers with total <a href='https://sc
 - *2022.08*: &nbsp; [Adversarial Attack and Defense on Graph Data: A Survey](https://ieeexplore.ieee.org/document/9878092) is accepted by TKDE.
 - *2022.06*: &nbsp; I'am honored to be the PC Member of FedGraph2022 @ CIKM22. We need your contributions!
 - *2022.05*: &nbsp; 🎉🎉 I work as Summer Research Intern for Knox - AI/Mobile/Privacy @ <img src='./images/logos/sra.png' style='height: 1.5em;'>.
-- *2022.02*: &nbsp; I'am honored to be invited to present at WSDM'22 FL4P-WSDM Workshop.
+- *2022.02*: &nbsp; I'am honored to be invited to present at WSDM'22 FL4P-WSDM Workshop. [`slide`](https://drive.google.com/file/d/1_Eh9Zf8fICPFu1j1RTCjH7dQ0DIspSkw/view)
 
 # 📝 Publications 
+
+<div class='paper-box'><div class='paper-box-image'><div><div class="badge">arXiv 2023</div><img src='images/pub/fedepth.png' alt="sym" width="100%"></div></div>
+<div class='paper-box-text' markdown="1">
+
+[Memory-adaptive Depth-wise Heterogenous Federated Learning](https://arxiv.org/pdf/2303.04887v1.pdf)
+
+**Kai Zhang**, Yutong Dai, Hongyi Wang, Eric Xing, Xun Chen, Lichao Sun
+- **TL;DR**: We introduce a memory-adaptive depth-wise learning solution in FL, which adaptively decomposes the full model into blocks according to the memory budgets of each client and trains blocks sequentially to obtain a full inference model.
+- **Source Code**: [FeDepth ![](https://img.shields.io/github/stars/taokz/fedepth?style=social)](https://github.com/taokz/FeDepth).
+</div>
+</div>
 
 <div class='paper-box'><div class='paper-box-image'><div><div class="badge">EMNLP 2022</div><img src='images/pub/fedr.png' alt="sym" width="100%"></div></div>
 <div class='paper-box-text' markdown="1">
@@ -49,7 +60,7 @@ I have published approximately 20 research papers with total <a href='https://sc
 </div>
 </div>
 
-- `TKDE` [Adversarial Attack and Defense on Graph Data: A Survey](), Lichao Sun, Yingtong Dou, Carl Yang, **Kai Zhang**, Ji Wang, Philip S. Yu, Lifang He, Bo Li [![](https://img.shields.io/github/stars/safe-graph/graph-adversarial-learning-literature?style=social)](https://github.com/safe-graph/graph-adversarial-learning-literature)
+- ``TKDE`` [Adversarial Attack and Defense on Graph Data: A Survey](), Lichao Sun, Yingtong Dou, Carl Yang, **Kai Zhang**, Ji Wang, Philip S. Yu, Lifang He, Bo Li [![](https://img.shields.io/github/stars/safe-graph/graph-adversarial-learning-literature?style=social)](https://github.com/safe-graph/graph-adversarial-learning-literature)
 
 
 <!---
