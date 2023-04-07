@@ -26,6 +26,7 @@ I have published approximately 20 research papers with total <a href='https://sc
 
 
 # 🔥 News
+- *2023.04*: &nbsp; 🎉🎉 I will join <img src='./images/logos/amazon.png' style='height: 1.5em;'> in San Diego as a Applited Scientist Intern during summer. See you in California!
 - *2023.03*: &nbsp; The first preprint of [FeDepth](https://arxiv.org/abs/2303.04887) is released.
 - *2023.02*: &nbsp; The first preprint of [A Comprehensive Survey on Pretrained Foundation Models: A History from BERT to ChatGPT](https://arxiv.org/abs/2302.09419) is released. We are still working on it!
 - *2023.01*: &nbsp; 🎉🎉 I join <img src='./images/logos/mayo.png' style='height: 1.5em;'> [Mayo ADVANCE Lab](https://www.researchgate.net/lab/Mayo-ADVANCE-Lab-PI-Hongfang-Liu-Hongfang-Liu) as a Bioinformatics Intern.
