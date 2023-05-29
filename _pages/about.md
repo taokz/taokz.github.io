@@ -50,7 +50,7 @@ I have published approximately 20 research papers with total <a href='https://sc
 
 **Kai Zhang**, Jun Yu, Zhiling Yan, Yixin Liu, Eashan Adhikarla, Sunyang Fu, Xun Chen, Chen Chen, Yuyin Zhou, Xiang Li, Lifang He, Brian D. Davison, Quanzheng Li, Yong Chen, Hongfang Liu, Lichao Sun
 - **TL;DR**: We introduce a unified and generalist Biomedical Generative Pre-trained Transformer (BiomedGPT) model, which leverages self-supervision on large and diverse datasets to accept multi-modal inputs and perform a range of downstream tasks.
-- **Source Code**: [FeDepth ![](https://img.shields.io/github/stars/taokz/BiomedGPT?style=social)](https://github.com/taokz/BiomedGPT).
+- **Source Code**: [BiomedGPT ![](https://img.shields.io/github/stars/taokz/BiomedGPT?style=social)](https://github.com/taokz/BiomedGPT).
 </div>
 </div>
 
