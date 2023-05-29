@@ -26,6 +26,7 @@ I have published approximately 20 research papers with total <a href='https://sc
 
 
 # 🔥 News
+- *2023.05*: &nbsp; The first preprint of [BiomedGPT: A Unified and Generalist Biomedical Generative Pre-trained Transformer for Vision, Language, and Multimodal Tasks](https://arxiv.org/abs/2305.17100) is released. We are still working on it!
 - *2023.04*: &nbsp; 🎉🎉 I will join <img src='./images/logos/amazon.png' style='height: 1.5em;'> in San Diego as a Applited Scientist Intern during summer. See you in California!
 - *2023.03*: &nbsp; The first preprint of [FeDepth](https://arxiv.org/abs/2303.04887) is released.
 - *2023.02*: &nbsp; The first preprint of [A Comprehensive Survey on Pretrained Foundation Models: A History from BERT to ChatGPT](https://arxiv.org/abs/2302.09419) is released. We are still working on it!
@@ -42,7 +43,18 @@ I have published approximately 20 research papers with total <a href='https://sc
 
 # 📝 Publications 
 
-<div class='paper-box'><div class='paper-box-image'><div><div class="badge">arXiv 2023</div><img src='images/pub/fedepth.png' alt="sym" width="100%"></div></div>
+<div class='paper-box'><div class='paper-box-image'><div><div class="badge">arXiv 2023</div><img src='images/pub/biomedgpt.png' alt="sym" width="100%"></div></div>
+<div class='paper-box-text' markdown="1">
+
+[BiomedGPT: A Unified and Generalist Biomedical Generative Pre-trained Transformer for Vision, Language, and Multimodal Tasks](https://arxiv.org/pdf/2305.17100.pdf)
+
+**Kai Zhang**, Jun Yu, Zhiling Yan, Yixin Liu, Eashan Adhikarla, Sunyang Fu, Xun Chen, Chen Chen, Yuyin Zhou, Xiang Li, Lifang He, Brian D. Davison, Quanzheng Li, Yong Chen, Hongfang Liu, Lichao Sun
+- **TL;DR**: We introduce a unified and generalist Biomedical Generative Pre-trained Transformer (BiomedGPT) model, which leverages self-supervision on large and diverse datasets to accept multi-modal inputs and perform a range of downstream tasks.
+- **Source Code**: [FeDepth ![](https://img.shields.io/github/stars/taokz/BiomedGPT?style=social)](https://github.com/taokz/BiomedGPT).
+</div>
+</div>
+
+<div class='paper-box'><div class='paper-box-image'><div><div class="badge">FLSys 2023</div><img src='images/pub/fedepth.png' alt="sym" width="100%"></div></div>
 <div class='paper-box-text' markdown="1">
 
 [Memory-adaptive Depth-wise Heterogenous Federated Learning](https://arxiv.org/pdf/2303.04887v1.pdf)
