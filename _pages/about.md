@@ -17,8 +17,7 @@ redirect_from:
 
 <span class='anchor' id='about-me'></span>
 
-I am a second-year Ph.D. student in the [Department of Computer Science & Engineering, Lehigh University](https://engineering.lehigh.edu/cse), where I am advised by Prof. [Lichao Sun](https://lichao-sun.github.io). During my time as a research assistant at Embry-Riddle Aeronautical University, I analyzed large-scale aviation-related data to inform flight scheduling during emergency situations. 
-Currently, I am a research intern at the [AI&I Department, Mayo Clinic](https://www.mayo.edu/research/departments-divisions/artificial-intelligence-informatics/overview) <img src='./images/logos/mayo.png' style='height: 1.5em;'>, where I am developing vision-language pre-training and federated learning algorithms for electronic health records (EHR).
+I am a Ph.D. student in the [Department of Computer Science & Engineering, Lehigh University](https://engineering.lehigh.edu/cse), where I am advised by Prof. [Lichao Sun](https://lichao-sun.github.io). I was a research intern at the [AI&I Department, Mayo Clinic](https://www.mayo.edu/research/departments-divisions/artificial-intelligence-informatics/overview) <img src='./images/logos/mayo.png' style='height: 1.5em;'>, where I am developing vision-language pre-training and federated learning algorithms for electronic health records (EHR).
 
 My recent research focuses on **Multi-modal and Federated Learning for Biomedicine**, as well as efficient machine/deep learning system design, with the goal of **Accelerating Discovery to Delivery for Clinical Excellence**. Ultimately, my career goal is to develop trustworthy and reliable artificial general intelligence (AGI) systems for computational precision medicine and health.
 
@@ -26,8 +25,9 @@ I have published approximately 20 research papers with total <a href='https://sc
 
 
 # 🔥 News
+- *2023.06*: &nbsp; We release [FedMLSecurity: A Benchmark for Attacks and Defenses in Federated Learning and LLMs](https://arxiv.org/abs/2306.04959)!
 - *2023.05*: &nbsp; The first preprint of [BiomedGPT: A Unified and Generalist Biomedical Generative Pre-trained Transformer for Vision, Language, and Multimodal Tasks](https://arxiv.org/abs/2305.17100) is released. We are still working on it!
-- *2023.04*: &nbsp; 🎉🎉 I will join <img src='./images/logos/amazon.png' style='height: 1.5em;'> in San Diego as a Applited Scientist Intern during summer. See you in California!
+- *2023.04*: &nbsp; 🎉🎉 I will join  <img src='./images/logos/amazon.png' style='height: 1.4em;'>  in San Diego as a Applited Scientist Intern during summer. See you in California!
 - *2023.03*: &nbsp; The first preprint of [FeDepth](https://arxiv.org/abs/2303.04887) is released.
 - *2023.02*: &nbsp; The first preprint of [A Comprehensive Survey on Pretrained Foundation Models: A History from BERT to ChatGPT](https://arxiv.org/abs/2302.09419) is released. We are still working on it!
 - *2023.01*: &nbsp; 🎉🎉 I join <img src='./images/logos/mayo.png' style='height: 1.5em;'> [Mayo ADVANCE Lab](https://www.researchgate.net/lab/Mayo-ADVANCE-Lab-PI-Hongfang-Liu-Hongfang-Liu) as a Bioinformatics Intern.
@@ -38,8 +38,6 @@ I have published approximately 20 research papers with total <a href='https://sc
 - *2022.05*: &nbsp; 🎉🎉 I work as Summer Research Intern for Knox - AI/Mobile/Privacy @ <img src='./images/logos/sra.png' style='height: 1.5em;'>.
 - *2022.02*: &nbsp; I'am honored to be invited to present at WSDM'22 FL4P-WSDM Workshop. <a href='https://drive.google.com/file/d/1_Eh9Zf8fICPFu1j1RTCjH7dQ0DIspSkw/view'><img src="https://img.shields.io/badge/slide-important">
 
-
-[`slide`](https://drive.google.com/file/d/1_Eh9Zf8fICPFu1j1RTCjH7dQ0DIspSkw/view)
 
 # 📝 Publications 
 
