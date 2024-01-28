@@ -25,6 +25,9 @@ I have published approximately 20 research papers with total <a href='https://sc
 
 
 # 🔥 News
+- *2024.01*: &nbsp; 🎉🎉 I will join  <img src='./images/logos/nec.jpeg' style='height: 1.4em;'>  in Princeton, NJ as a Research Intern during summer, working on Multimodal Large Language Model for Healthcare!
+- *2023.12*: &nbsp; We release [Robust Computer Vision in an Ever-Changing World: A Survey of Techniques for Tackling Distribution Shifts](https://arxiv.org/abs/2312.01540)!
+- *2023.07-10*: &nbsp; We conduct several evaluations of large foundation models for healthcare, including [Holistic evaluation of GPT-4V for biomedical imaging](https://arxiv.org/abs/2312.05256), [primary outcomes of GPT-4V for radiology and pathology VQA](https://arxiv.org/abs/2310.19061), and [LLM for radiology NLP](https://arxiv.org/abs/2307.13693).
 - *2023.06*: &nbsp; We release [FedMLSecurity: A Benchmark for Attacks and Defenses in Federated Learning and LLMs](https://arxiv.org/abs/2306.04959)!
 - *2023.05*: &nbsp; The first preprint of [BiomedGPT: A Unified and Generalist Biomedical Generative Pre-trained Transformer for Vision, Language, and Multimodal Tasks](https://arxiv.org/abs/2305.17100) is released. We are still working on it!
 - *2023.04*: &nbsp; 🎉🎉 I will join  <img src='./images/logos/amazon.png' style='height: 1.4em;'>  in San Diego as a Applited Scientist Intern during summer. See you in California!
