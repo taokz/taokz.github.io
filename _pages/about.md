@@ -25,7 +25,8 @@ I have published approximately 20 research papers with total <a href='https://sc
 
 
 # 🔥 News
-- *2024.08*: &nbsp; The first preprint of [Biomedical SAM 2: Segment Anything in Biomedical Images and Videos](https://www.arxiv.org/abs/2408.03286) is released. We are still working on it!
+- *2024.09*: &nbsp; [TTT-Unet: Enhancing U-Net with Test-Time Training Layers for Biomedical Image Segmentation](https://arxiv.org/abs/2409.11299) is released. Stay tuned! [![](https://img.shields.io/github/stars/rongzhou7/TTT-Unet?style=social)](https://github.com/rongzhou7/TTT-Unet)
+- *2024.08*: &nbsp; The first preprint of [Biomedical SAM 2: Segment Anything in Biomedical Images and Videos](https://www.arxiv.org/abs/2408.03286) is released. We are still working on it! [![](https://img.shields.io/github/stars/ZhilingYan/Biomedical-SAM-2?style=social)](https://github.com/ZhilingYan/Biomedical-SAM-2)
 - *2024.07*: &nbsp; 🔥🔥[BiomedGPT: A generalist vision–language foundation model for diverse biomedical tasks](https://www.nature.com/articles/s41591-024-03185-2) is accepted by Nature Medicine!
 - *2024.05*: &nbsp; 🔥🔥[FedMLSecurity: A Benchmark for Attacks and Defenses in Federated Learning and LLMs](https://arxiv.org/abs/2306.04959) is accepted by KDD!
 - *2024.01*: &nbsp; 🎉🎉 I will join  <img src='./images/logos/nec.jpeg' style='height: 1.4em;'>  in Princeton, NJ as a Research Intern during summer, working on Multimodal Large Language Model for Healthcare!
