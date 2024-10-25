@@ -25,13 +25,14 @@ I have published approximately 20 research papers with total <a href='https://sc
 
 
 # 🔥 News
-- *2024.09*: &nbsp; [TTT-Unet: Enhancing U-Net with Test-Time Training Layers for Biomedical Image Segmentation](https://arxiv.org/abs/2409.11299) is released. Stay tuned! [![](https://img.shields.io/github/stars/rongzhou7/TTT-Unet?style=social)](https://github.com/rongzhou7/TTT-Unet)
-- *2024.08*: &nbsp; The first preprint of [Biomedical SAM 2: Segment Anything in Biomedical Images and Videos](https://www.arxiv.org/abs/2408.03286) is released. We are still working on it! [![](https://img.shields.io/github/stars/ZhilingYan/Biomedical-SAM-2?style=social)](https://github.com/ZhilingYan/Biomedical-SAM-2)
+- *2024.10*: &nbsp; 🔥🔥[TTT-Unet](https://arxiv.org/abs/2409.11299) is accepted by AIM-FM Workshop @ NeurIPS'24! [![](https://img.shields.io/github/stars/rongzhou7/TTT-Unet?style=social)](https://github.com/rongzhou7/TTT-Unet)
+- *2024.10*: &nbsp; 🔥🔥[Biomedical SAM 2](https://www.arxiv.org/abs/2408.03286) is accepted by AIM-FM Workshop @ NeurIPS'24! [![](https://img.shields.io/github/stars/ZhilingYan/Biomedical-SAM-2?style=social)](https://github.com/ZhilingYan/Biomedical-SAM-2)
+- *2024.10*: &nbsp; 🔥🔥[A Comprehensive Survey on Pretrained Foundation Models: A History from BERT to ChatGPT](https://arxiv.org/abs/2302.09419) is accepted by International Journal of Machine Learning and Cybernetics!
 - *2024.07*: &nbsp; 🔥🔥[BiomedGPT: A generalist vision–language foundation model for diverse biomedical tasks](https://www.nature.com/articles/s41591-024-03185-2) is accepted by Nature Medicine!
 - *2024.05*: &nbsp; 🔥🔥[FedMLSecurity: A Benchmark for Attacks and Defenses in Federated Learning and LLMs](https://arxiv.org/abs/2306.04959) is accepted by KDD!
 - *2024.01*: &nbsp; 🎉🎉 I will join  <img src='./images/logos/nec.jpeg' style='height: 1.4em;'>  in Princeton, NJ as a Research Intern during summer, working on Multimodal Large Language Model for Healthcare!
-- *2023.07-10*: &nbsp; We conduct several evaluations of large foundation models for healthcare, including [Holistic evaluation of GPT-4V for biomedical imaging](https://arxiv.org/abs/2312.05256), [primary outcomes of GPT-4V for radiology and pathology VQA](https://arxiv.org/abs/2310.19061), and [LLM for radiology NLP](https://arxiv.org/abs/2307.13693).
-<!-- - *2023.06*: &nbsp; We release [FedMLSecurity: A Benchmark for Attacks and Defenses in Federated Learning and LLMs](https://arxiv.org/abs/2306.04959)! -->
+<!-- - *2023.07-10*: &nbsp; We conduct several evaluations of large foundation models for healthcare, including [Holistic evaluation of GPT-4V for biomedical imaging](https://arxiv.org/abs/2312.05256), [primary outcomes of GPT-4V for radiology and pathology VQA](https://arxiv.org/abs/2310.19061), and [LLM for radiology NLP](https://arxiv.org/abs/2307.13693).
+- *2023.06*: &nbsp; We release [FedMLSecurity: A Benchmark for Attacks and Defenses in Federated Learning and LLMs](https://arxiv.org/abs/2306.04959)! 
 - *2023.05*: &nbsp; The first preprint of [BiomedGPT: A Unified and Generalist Biomedical Generative Pre-trained Transformer for Vision, Language, and Multimodal Tasks](https://arxiv.org/abs/2305.17100) is released. We are still working on it!
 - *2023.04*: &nbsp; 🎉🎉 I will join  <img src='./images/logos/amazon.png' style='height: 1.4em;'>  in San Diego as a Applited Scientist Intern during summer. See you in California!
 - *2023.03*: &nbsp; The first preprint of [FeDepth](https://arxiv.org/abs/2303.04887) is released.
@@ -42,8 +43,8 @@ I have published approximately 20 research papers with total <a href='https://sc
 - *2022.08*: &nbsp; 🔥🔥[Adversarial Attack and Defense on Graph Data: A Survey](https://ieeexplore.ieee.org/document/9878092) is accepted by TKDE.
 - *2022.06*: &nbsp; I'am honored to be the PC Member of FedGraph2022 @ CIKM22. We need your contributions!
 - *2022.05*: &nbsp; 🎉🎉 I work as Summer Research Intern for Knox - AI/Mobile/Privacy @ <img src='./images/logos/sra.png' style='height: 1.5em;'>.
-- *2022.02*: &nbsp; I'am honored to be invited to present at WSDM'22 FL4P-WSDM Workshop. <a href='https://drive.google.com/file/d/1_Eh9Zf8fICPFu1j1RTCjH7dQ0DIspSkw/view'><img src="https://img.shields.io/badge/slide-important">
-
+- *2022.02*: &nbsp; I'am honored to be invited to present at WSDM'22 FL4P-WSDM Workshop. <a href='https://drive.google.com/file/d/1_Eh9Zf8fICPFu1j1RTCjH7dQ0DIspSkw/view'><img src="https://img.shields.io/badge/slide-important"> 
+-->
 
 # 📝 Publications 
 
