@@ -324,33 +324,39 @@
     let allPairs = {};
 
     async function initializePage() {
-        allPairs = await loadPairsFromCSV();
-        const currentPair = parseInt(new URLSearchParams(window.location.search).get('pair')) || 1;
-        
-        document.getElementById('currentPair').textContent = currentPair;
-        document.getElementById('totalPairs').textContent = Object.keys(allPairs).length;
-
-        const pairData = allPairs[currentPair];
-        if (pairData) {
-            const img1 = document.getElementById('img1');
-            const img2 = document.getElementById('img2');
+        try {
+            allPairs = await loadPairsFromCSV();
+            const currentPair = parseInt(new URLSearchParams(window.location.search).get('pair')) || 1;
             
-            img1.src = pairData.image1;
-            img2.src = pairData.image2;
+            document.getElementById('currentPair').textContent = currentPair;
+            document.getElementById('totalPairs').textContent = Object.keys(allPairs).length;
 
-            // Add click handlers for enlargement
-            img1.onclick = function() { showImage(pairData.image1); }
-            img2.onclick = function() { showImage(pairData.image2); }
+            const pairData = allPairs[currentPair];
+            if (pairData) {
+                const img1 = document.getElementById('img1');
+                const img2 = document.getElementById('img2');
+                
+                img1.src = pairData.image1;
+                img2.src = pairData.image2;
 
-            // Restore previous selection if it exists
-            const responses = loadResponses();
-            const previousChoice = responses[`pair_${currentPair}_quality`];
-            if (previousChoice) {
-                const radioButton = document.querySelector(`input[name="quality"][value="${previousChoice}"]`);
-                if (radioButton) {
-                    radioButton.checked = true;
+                // Add click handlers for enlargement
+                img1.onclick = function() { showImage(pairData.image1); }
+                img2.onclick = function() { showImage(pairData.image2); }
+
+                // Restore previous selection if it exists
+                const responses = loadResponses();
+                console.log('Current responses:', responses); // Debug log
+                const previousChoice = responses[`pair_${currentPair}_quality`];
+                console.log('Previous choice for pair', currentPair, ':', previousChoice); // Debug log
+                if (previousChoice) {
+                    const radioButton = document.querySelector(`input[name="quality"][value="${previousChoice}"]`);
+                    if (radioButton) {
+                        radioButton.checked = true;
+                    }
                 }
             }
+        } catch (error) {
+            console.error('Error in initializePage:', error);
         }
     }
 
@@ -425,9 +431,7 @@
       const choice = document.querySelector('input[name=quality]:checked').value;
 
       try {
-        // Save the choice immediately to localStorage
         const success = saveResponse(`pair_${currentPair}_quality`, choice);
-        
         if (success) {
           window.location.href = `alignment.html?pair=${currentPair}`;
         } else {

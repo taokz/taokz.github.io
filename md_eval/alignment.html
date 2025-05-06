@@ -333,44 +333,50 @@
 
     // Initialize the page with CSV data
     async function initializePage() {
-        allPairs = await loadPairsFromCSV();
-        const currentPair = parseInt(new URLSearchParams(window.location.search).get('pair')) || 1;
-        
-        document.getElementById('currentPair').textContent = currentPair;
-        document.getElementById('totalPairs').textContent = Object.keys(allPairs).length;
-
-        const pairData = allPairs[currentPair];
-        if (pairData) {
-            const img1 = document.getElementById('img1');
-            const img2 = document.getElementById('img2');
-            const cap1 = document.getElementById('cap1');
-            const cap2 = document.getElementById('cap2');
+        try {
+            allPairs = await loadPairsFromCSV();
+            const currentPair = parseInt(new URLSearchParams(window.location.search).get('pair')) || 1;
             
-            img1.src = pairData.image1.src;
-            img2.src = pairData.image2.src;
-            cap1.textContent = pairData.image1.caption;
-            cap2.textContent = pairData.image2.caption;
+            document.getElementById('currentPair').textContent = currentPair;
+            document.getElementById('totalPairs').textContent = Object.keys(allPairs).length;
 
-            // Add click handlers for enlargement
-            img1.onclick = function() { showImage(pairData.image1.src); }
-            img2.onclick = function() { showImage(pairData.image2.src); }
+            const pairData = allPairs[currentPair];
+            if (pairData) {
+                const img1 = document.getElementById('img1');
+                const img2 = document.getElementById('img2');
+                const cap1 = document.getElementById('cap1');
+                const cap2 = document.getElementById('cap2');
+                
+                img1.src = pairData.image1.src;
+                img2.src = pairData.image2.src;
+                cap1.textContent = pairData.image1.caption;
+                cap2.textContent = pairData.image2.caption;
 
-            // Restore previous selection if it exists
-            const responses = loadResponses();
-            const previousChoice = responses[`pair_${currentPair}_alignment`];
-            if (previousChoice) {
-                const radioButton = document.querySelector(`input[name="alignment"][value="${previousChoice}"]`);
-                if (radioButton) {
-                    radioButton.checked = true;
+                // Add click handlers for enlargement
+                img1.onclick = function() { showImage(pairData.image1.src); }
+                img2.onclick = function() { showImage(pairData.image2.src); }
+
+                // Restore previous selection if it exists
+                const responses = loadResponses();
+                console.log('Current responses:', responses); // Debug log
+                const previousChoice = responses[`pair_${currentPair}_alignment`];
+                console.log('Previous choice for pair', currentPair, ':', previousChoice); // Debug log
+                if (previousChoice) {
+                    const radioButton = document.querySelector(`input[name="alignment"][value="${previousChoice}"]`);
+                    if (radioButton) {
+                        radioButton.checked = true;
+                    }
                 }
             }
-        }
 
-        // Load and display previous quality choice
-        const responses = loadResponses();
-        if (responses[`pair_${currentPair}_quality`]) {
-          document.getElementById('info').innerHTML =
-            `<p>You picked <strong>${responses[`pair_${currentPair}_quality`]}</strong> for quality in pair #${currentPair}.</p>`;
+            // Load and display previous quality choice
+            const responses = loadResponses();
+            if (responses[`pair_${currentPair}_quality`]) {
+              document.getElementById('info').innerHTML =
+                `<p>You picked <strong>${responses[`pair_${currentPair}_quality`]}</strong> for quality in pair #${currentPair}.</p>`;
+            }
+        } catch (error) {
+            console.error('Error in initializePage:', error);
         }
     }
 
@@ -429,22 +435,17 @@
     // Handle form submission
     document.getElementById('alignForm').addEventListener('submit', function(evt) {
       evt.preventDefault();
-      const currentPair = parseInt(new URLSearchParams(window.location.search).get('pair'));
+      const currentPair = parseInt(new URLSearchParams(window.location.search).get('pair')) || 1;
       const choice = document.querySelector('input[name=alignment]:checked').value;
 
       try {
-        // Save the choice immediately to localStorage
         const success = saveResponse(`pair_${currentPair}_alignment`, choice);
-        
         if (success) {
           const nextPair = currentPair + 1;
-          
           if (nextPair <= Object.keys(allPairs).length) {
             window.location.href = `quality.html?pair=${nextPair}`;
           } else {
-            const responses = loadResponses();
-            alert('Thank you! You have completed all pairs.\n\nYour responses:\n' + 
-                  JSON.stringify(responses, null, 2));
+            alert('You have completed all pairs! You can now download your responses.');
           }
         } else {
           alert('Error saving your choice. Please try again.');
@@ -463,7 +464,6 @@
     // Add this function to handle the "Previous" button
     function goToPrevious() {
       const currentPair = parseInt(new URLSearchParams(window.location.search).get('pair')) || 1;
-      // From alignment, always go back to quality of same pair
       window.location.href = `quality.html?pair=${currentPair}`;
     }
 
