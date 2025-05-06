@@ -103,6 +103,49 @@
     .button-icon {
         font-size: 20px;
     }
+
+    /* Add these styles to the existing <style> section */
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.9);
+        padding: 20px;
+        box-sizing: border-box;
+    }
+
+    .modal img {
+        max-width: 90%;
+        max-height: 90vh;
+        margin: auto;
+        display: block;
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .modal-close {
+        position: absolute;
+        right: 25px;
+        top: 15px;
+        color: #f1f1f1;
+        font-size: 40px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    .image-box img {
+        cursor: pointer;
+        transition: transform 0.2s;
+    }
+
+    .image-box img:hover {
+        transform: scale(1.05);
+    }
   </style>
 </head>
 <body>
@@ -165,6 +208,12 @@
     </button>
   </div>
 
+  <!-- Add this before the <script> tag -->
+  <div id="imageModal" class="modal">
+      <span class="modal-close">&times;</span>
+      <img id="modalImage" src="" alt="Enlarged image">
+  </div>
+
   <script>
     // All pairs data
     const allPairs = {
@@ -214,7 +263,37 @@
       return JSON.parse(localStorage.getItem('responses') || '{}');
     }
 
-    // Initialize page
+    // Add these functions to the existing <script> section
+    const modal = document.getElementById('imageModal');
+    const modalImg = document.getElementById('modalImage');
+    const closeBtn = document.querySelector('.modal-close');
+
+    // Function to open modal
+    function showImage(imgSrc) {
+      modal.style.display = "block";
+      modalImg.src = imgSrc;
+    }
+
+    // Close modal when clicking the × button
+    closeBtn.onclick = function() {
+      modal.style.display = "none";
+    }
+
+    // Close modal when clicking outside the image
+    modal.onclick = function(e) {
+      if (e.target === modal) {
+        modal.style.display = "none";
+      }
+    }
+
+    // Close modal with Escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && modal.style.display === "block") {
+        modal.style.display = "none";
+      }
+    });
+
+    // Modify the initializePage function to add click handlers
     async function initializePage() {
       const params = new URLSearchParams(window.location.search);
       const currentPair = parseInt(params.get('pair'));
@@ -286,11 +365,12 @@
     // Initialize the page when loaded
     initializePage();
 
-    // function goToPrevious() {
-    //   const currentPair = parseInt(new URLSearchParams(window.location.search).get('pair')) || 1;
-    //   // From alignment, always go back to quality of same pair
-    //   window.location.href = `quality.html?pair=${currentPair}`;
-    // }
+    // Add this function to handle the "Previous" button
+    function goToPrevious() {
+      const currentPair = parseInt(new URLSearchParams(window.location.search).get('pair')) || 1;
+      // From alignment, always go back to quality of same pair
+      window.location.href = `quality.html?pair=${currentPair}`;
+    }
 
     // Add this function to your existing JavaScript
     function downloadResponses() {
