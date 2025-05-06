@@ -334,25 +334,36 @@
     // Initialize the page with CSV data
     async function initializePage() {
         allPairs = await loadPairsFromCSV();
-        const params = new URLSearchParams(window.location.search);
-        const currentPair = parseInt(params.get('pair'));
-
+        const currentPair = parseInt(new URLSearchParams(window.location.search).get('pair')) || 1;
+        
         document.getElementById('currentPair').textContent = currentPair;
         document.getElementById('totalPairs').textContent = Object.keys(allPairs).length;
 
         const pairData = allPairs[currentPair];
         if (pairData) {
-          const img1 = document.getElementById('img1');
-          const img2 = document.getElementById('img2');
-          
-          img1.src = pairData.image1.src;
-          img2.src = pairData.image2.src;
-          document.getElementById('cap1').textContent = pairData.image1.caption;
-          document.getElementById('cap2').textContent = pairData.image2.caption;
+            const img1 = document.getElementById('img1');
+            const img2 = document.getElementById('img2');
+            const cap1 = document.getElementById('cap1');
+            const cap2 = document.getElementById('cap2');
+            
+            img1.src = pairData.image1.src;
+            img2.src = pairData.image2.src;
+            cap1.textContent = pairData.image1.caption;
+            cap2.textContent = pairData.image2.caption;
 
-          // Add click handlers for enlargement
-          img1.onclick = function() { showImage(pairData.image1.src); }
-          img2.onclick = function() { showImage(pairData.image2.src); }
+            // Add click handlers for enlargement
+            img1.onclick = function() { showImage(pairData.image1.src); }
+            img2.onclick = function() { showImage(pairData.image2.src); }
+
+            // Restore previous selection if it exists
+            const responses = loadResponses();
+            const previousChoice = responses[`pair_${currentPair}_alignment`];
+            if (previousChoice) {
+                const radioButton = document.querySelector(`input[name="alignment"][value="${previousChoice}"]`);
+                if (radioButton) {
+                    radioButton.checked = true;
+                }
+            }
         }
 
         // Load and display previous quality choice

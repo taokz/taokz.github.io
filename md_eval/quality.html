@@ -341,6 +341,16 @@
             // Add click handlers for enlargement
             img1.onclick = function() { showImage(pairData.image1); }
             img2.onclick = function() { showImage(pairData.image2); }
+
+            // Restore previous selection if it exists
+            const responses = loadResponses();
+            const previousChoice = responses[`pair_${currentPair}_quality`];
+            if (previousChoice) {
+                const radioButton = document.querySelector(`input[name="quality"][value="${previousChoice}"]`);
+                if (radioButton) {
+                    radioButton.checked = true;
+                }
+            }
         }
     }
 
