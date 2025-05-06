@@ -44,6 +44,65 @@
       border-radius: 4px;
       cursor: pointer;
     }
+    .nav-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin: 20px 0;
+    }
+    .nav-button {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .nav-button:hover {
+      background-color: #0056b3;
+    }
+    .nav-button:disabled {
+      background-color: #cccccc;
+      cursor: not-allowed;
+    }
+    .home-button {
+      background-color: #6c757d;
+    }
+    .home-button:hover {
+      background-color: #5a6268;
+    }
+    .button-container {
+        margin: 20px 0;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    .download-button {
+        padding: 10px 20px;
+        background-color: #4CAF50;  /* Green color */
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .download-button:hover {
+        background-color: #45a049;
+    }
+
+    /* Add icon styles if not already present */
+    .button-icon {
+        font-size: 20px;
+    }
   </style>
 </head>
 <body>
@@ -84,10 +143,27 @@
       </label>
     </div>
 
-    <button type="submit">Next Pair &raquo;</button>
+    <div class="nav-buttons">
+      <button type="button" id="prevButton" class="nav-button" onclick="goToPrevious()">
+        <span class="button-icon">⬅️</span> Previous
+      </button>
+      <button type="submit" class="nav-button">
+        Next <span class="button-icon">➡️</span>
+      </button>
+      <button type="button" class="nav-button home-button" onclick="window.location.href='index.html'">
+        <span class="button-icon">🏠</span> Return to Index
+      </button>
+    </div>
   </form>
 
-  <button type="button" class="reset-button" onclick="resetAllChoices()">Reset All Choices</button>
+  <div class="button-container">
+    <button type="button" class="download-button" onclick="downloadResponses()" style="display: flex !important;">
+        <span class="button-icon">⬇️</span> Download Responses
+    </button>
+    <button type="button" class="reset-button" onclick="resetAllChoices()">
+        <span class="button-icon">🔄</span> Reset All Choices
+    </button>
+  </div>
 
   <script>
     // All pairs data
@@ -209,6 +285,55 @@
 
     // Initialize the page when loaded
     initializePage();
+
+    // function goToPrevious() {
+    //   const currentPair = parseInt(new URLSearchParams(window.location.search).get('pair')) || 1;
+    //   // From alignment, always go back to quality of same pair
+    //   window.location.href = `quality.html?pair=${currentPair}`;
+    // }
+
+    // Add this function to your existing JavaScript
+    function downloadResponses() {
+      const responses = loadResponses();
+      
+      // Check if there are any responses
+      if (Object.keys(responses).length === 0) {
+          alert('No responses to download yet. Please complete at least one evaluation.');
+          return;
+      }
+
+      // Add timestamp and metadata to the download
+      const downloadData = {
+          timestamp: new Date().toISOString(),
+          totalPairs: Object.keys(allPairs).length,
+          responses: responses
+      };
+
+      const dataStr = JSON.stringify(downloadData, null, 2);
+      const dataBlob = new Blob([dataStr], { type: 'application/json' });
+      const url = URL.createObjectURL(dataBlob);
+      const link = document.createElement('a');
+      link.href = url;
+      
+      // Add timestamp to filename
+      const date = new Date().toISOString().split('T')[0];
+      link.download = `image_evaluation_responses_${date}.json`;
+      
+      // Show feedback
+      const downloadButton = document.querySelector('.download-button');
+      const originalText = downloadButton.innerHTML;
+      downloadButton.innerHTML = '<span class="button-icon">✅</span> Downloaded!';
+      
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
+
+      // Reset button text after 2 seconds
+      setTimeout(() => {
+          downloadButton.innerHTML = originalText;
+      }, 2000);
+    }
   </script>
 </body>
 </html>
