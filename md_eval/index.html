@@ -42,6 +42,44 @@
             margin-top: 30px;
         }
     </style>
+    <script>
+        // Function to find the first incomplete pair
+        function findFirstIncompletePair() {
+            const responses = JSON.parse(localStorage.getItem('responses') || '{}');
+            let pairNumber = 1;
+            
+            while (responses[`pair_${pairNumber}_quality`] && responses[`pair_${pairNumber}_alignment`]) {
+                pairNumber++;
+            }
+            
+            return pairNumber;
+        }
+
+        // Function to check if any evaluations exist
+        function hasExistingEvaluations() {
+            const responses = JSON.parse(localStorage.getItem('responses') || '{}');
+            return Object.keys(responses).length > 0;
+        }
+
+        // Function to update button text and handle click
+        function initializeStartButton() {
+            const startButton = document.querySelector('.start-button');
+            if (hasExistingEvaluations()) {
+                startButton.textContent = 'Continue Evaluation';
+            } else {
+                startButton.textContent = 'Start Evaluation';
+            }
+
+            startButton.addEventListener('click', function(event) {
+                event.preventDefault();
+                const nextPair = findFirstIncompletePair();
+                window.location.href = `quality.html?pair=${nextPair}`;
+            });
+        }
+
+        // Initialize when document is loaded
+        document.addEventListener('DOMContentLoaded', initializeStartButton);
+    </script>
 </head>
 <body>
     <h1>Medical Image Evaluation Study</h1>
@@ -56,7 +94,7 @@
 
     <p>Your selections will help us understand preferences and develop better systems for medical image presentation and analysis. All responses are saved locally in your browser, allowing you to pause and resume the evaluation at your convenience.</p>
 
-    <a href="quality.html?pair=1" class="start-button">Start Evaluation</a>
+    <a href="#" class="start-button">Start Evaluation</a>
 
     <div class="notes">
         <h3>Key Information:</h3>
