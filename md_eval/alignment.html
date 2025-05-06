@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Image–Caption Alignment</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 40px;
+      text-align: center;
+    }
+    .images {
+      display: flex;
+      justify-content: center;
+      gap: 60px;
+      margin-top: 30px;
+    }
+    .image-box {
+      text-align: center;
+      max-width: 250px;
+    }
+    .image-box img {
+      max-width: 100%;
+      height: auto;
+      border: 1px solid #ccc;
+    }
+    .caption {
+      font-style: italic;
+      margin: 10px 0;
+    }
+    .unsure-option {
+      margin: 20px 0;
+    }
+    .progress {
+      margin-bottom: 20px;
+      color: #666;
+    }
+    .reset-button {
+      margin-top: 20px;
+      padding: 10px;
+      background-color: #ff4444;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>Website Title</h1>
+  <div class="progress">Pair <span id="currentPair">1</span> of <span id="totalPairs">3</span></div>
+  <h2>Task b: Select one image that is more aligned with the text / caption</h2>
+
+  <div id="info"></div>
+
+  <form id="alignForm">
+    <div class="images">
+      <div class="image-box">
+        <img id="img1" src="" alt="Image 1">
+        <p class="caption" id="cap1"></p>
+        <div>
+          <label>
+            <input type="radio" name="alignment" value="image1" required>
+            Image 1
+          </label>
+        </div>
+      </div>
+      <div class="image-box">
+        <img id="img2" src="" alt="Image 2">
+        <p class="caption" id="cap2"></p>
+        <div>
+          <label>
+            <input type="radio" name="alignment" value="image2">
+            Image 2
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="unsure-option">
+      <label>
+        <input type="radio" name="alignment" value="unsure">
+        Unsure
+      </label>
+    </div>
+
+    <button type="submit">Next Pair &raquo;</button>
+  </form>
+
+  <button type="button" class="reset-button" onclick="resetAllChoices()">Reset All Choices</button>
+
+  <script>
+    // All pairs data
+    const allPairs = {
+      1: {
+        image1: {
+          src: 'https://picsum.photos/id/237/600/600',
+          caption: 'Caption 1: A calm portrait of a dog in nature.'
+        },
+        image2: {
+          src: 'https://picsum.photos/id/238/600/600',
+          caption: 'Caption 2: A mountain reflected perfectly in a lake.'
+        }
+      },
+      2: {
+        image1: {
+          src: 'https://picsum.photos/id/239/600/600',
+          caption: 'Caption 3: A serene forest path.'
+        },
+        image2: {
+          src: 'https://picsum.photos/id/240/600/600',
+          caption: 'Caption 4: A bustling city street.'
+        }
+      },
+      3: {
+        image1: {
+          src: 'https://picsum.photos/id/241/600/600',
+          caption: 'Caption 5: A peaceful beach sunset.'
+        },
+        image2: {
+          src: 'https://picsum.photos/id/242/600/600',
+          caption: 'Caption 6: A snowy mountain peak.'
+        }
+      }
+      // Add more pairs as needed
+    };
+
+    // Save response to localStorage
+    function saveResponse(key, value) {
+      const responses = JSON.parse(localStorage.getItem('responses') || '{}');
+      responses[key] = value;
+      localStorage.setItem('responses', JSON.stringify(responses));
+      return true;
+    }
+
+    // Load responses from localStorage
+    function loadResponses() {
+      return JSON.parse(localStorage.getItem('responses') || '{}');
+    }
+
+    // Initialize page
+    async function initializePage() {
+      const params = new URLSearchParams(window.location.search);
+      const currentPair = parseInt(params.get('pair'));
+
+      document.getElementById('currentPair').textContent = currentPair;
+      document.getElementById('totalPairs').textContent = Object.keys(allPairs).length;
+
+      const pairData = allPairs[currentPair];
+      if (pairData) {
+        const img1 = document.getElementById('img1');
+        const img2 = document.getElementById('img2');
+        
+        img1.src = pairData.image1.src;
+        img2.src = pairData.image2.src;
+        document.getElementById('cap1').textContent = pairData.image1.caption;
+        document.getElementById('cap2').textContent = pairData.image2.caption;
+
+        // Add click handlers for enlargement
+        img1.onclick = function() { showImage(pairData.image1.src); }
+        img2.onclick = function() { showImage(pairData.image2.src); }
+      }
+
+      // Load and display previous quality choice
+      const responses = loadResponses();
+      if (responses[`pair_${currentPair}_quality`]) {
+        document.getElementById('info').innerHTML =
+          `<p>You picked <strong>${responses[`pair_${currentPair}_quality`]}</strong> for quality in pair #${currentPair}.</p>`;
+      }
+    }
+
+    // Reset function
+    function resetAllChoices() {
+      if (confirm('Are you sure you want to reset all your choices? This cannot be undone.')) {
+        localStorage.removeItem('responses');
+        localStorage.removeItem('evaluationSessionId');
+        window.location.href = 'quality.html?pair=1';
+      }
+    }
+
+    // Handle form submission
+    document.getElementById('alignForm').addEventListener('submit', function(evt) {
+      evt.preventDefault();
+      const currentPair = parseInt(new URLSearchParams(window.location.search).get('pair'));
+      const choice = document.querySelector('input[name=alignment]:checked').value;
+
+      try {
+        // Save the choice immediately to localStorage
+        const success = saveResponse(`pair_${currentPair}_alignment`, choice);
+        
+        if (success) {
+          const nextPair = currentPair + 1;
+          
+          if (nextPair <= Object.keys(allPairs).length) {
+            window.location.href = `quality.html?pair=${nextPair}`;
+          } else {
+            const responses = loadResponses();
+            alert('Thank you! You have completed all pairs.\n\nYour responses:\n' + 
+                  JSON.stringify(responses, null, 2));
+          }
+        } else {
+          alert('Error saving your choice. Please try again.');
+        }
+      } catch (error) {
+        console.error('Error saving choice:', error);
+        alert('Error saving your choice. Please try again.');
+      }
+    });
+
+    // Initialize the page when loaded
+    initializePage();
+  </script>
+</body>
+</html>

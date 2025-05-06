@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Image Quality Selection</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 40px;
+      text-align: center;
+    }
+    .images {
+      display: flex;
+      justify-content: center;
+      gap: 60px;
+      margin-top: 30px;
+    }
+    .image-box {
+      text-align: center;
+    }
+    .image-box img {
+      max-width: 250px;
+      height: auto;
+      border: 1px solid #ccc;
+    }
+    .unsure-option {
+      margin: 20px 0;
+    }
+    .progress {
+      margin-bottom: 20px;
+      color: #666;
+    }
+    .reset-button {
+      margin-top: 20px;
+      padding: 10px;
+      background-color: #ff4444;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.9);
+      padding: 20px;
+      box-sizing: border-box;
+    }
+    .modal img {
+      max-width: 90%;
+      max-height: 90vh;
+      margin: auto;
+      display: block;
+      position: relative;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    .modal-close {
+      position: absolute;
+      right: 25px;
+      top: 15px;
+      color: #f1f1f1;
+      font-size: 40px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .image-box img {
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    .image-box img:hover {
+      transform: scale(1.05);
+    }
+    .button-container {
+        margin: 20px 0;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+    }
+
+    .download-button {
+        padding: 10px 20px;
+        background-color: #4CAF50;  /* Green color */
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .download-button:hover {
+        background-color: #45a049;
+    }
+
+    .reset-button {
+        padding: 10px 20px;
+        background-color: #ff4444;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .reset-button:hover {
+        background-color: #ff0000;
+    }
+
+    /* Add icon styles */
+    .button-icon {
+        font-size: 20px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Website Title</h1>
+  <div class="progress">Pair <span id="currentPair">1</span> of <span id="totalPairs">3</span></div>
+  <h2>Task a: Select one image that is more clear / high quality</h2>
+
+  <form id="qualityForm">
+    <div class="images">
+      <div class="image-box">
+        <img id="img1" src="" alt="Image 1">
+        <div>
+          <label>
+            <input type="radio" name="quality" value="image1" required>
+            a. Image 1
+          </label>
+        </div>
+      </div>
+      <div class="image-box">
+        <img id="img2" src="" alt="Image 2">
+        <div>
+          <label>
+            <input type="radio" name="quality" value="image2">
+            b. Image 2
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <div class="unsure-option">
+      <label>
+        <input type="radio" name="quality" value="unsure">
+        c. Unsure
+      </label>
+    </div>
+
+    <button type="submit">Next &raquo;</button>
+  </form>
+
+  <div class="button-container">
+    <button type="button" class="download-button" onclick="downloadResponses()">
+        <span class="button-icon">⬇️</span> Download Responses
+    </button>
+    <button type="button" class="reset-button" onclick="resetAllChoices()">
+        <span class="button-icon">🔄</span> Reset All Choices
+    </button>
+  </div>
+
+  <!-- Add this at the end of the body, before scripts -->
+  <div id="imageModal" class="modal">
+    <span class="modal-close">&times;</span>
+    <img id="modalImage" src="" alt="Enlarged image">
+  </div>
+
+  <script>
+    // All pairs data
+    const allPairs = {
+      1: {
+        image1: 'https://picsum.photos/id/237/600/600',
+        image2: 'https://picsum.photos/id/238/600/600'
+      },
+      2: {
+        image1: 'https://picsum.photos/id/239/600/600',
+        image2: 'https://picsum.photos/id/240/600/600'
+      },
+      3: {
+        image1: 'https://picsum.photos/id/241/600/600',
+        image2: 'https://picsum.photos/id/242/600/600'
+      }
+      // Add more pairs as needed
+    };
+
+    // Generate or retrieve session ID
+    let sessionId = localStorage.getItem('evaluationSessionId');
+    if (!sessionId) {
+      sessionId = Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+      localStorage.setItem('evaluationSessionId', sessionId);
+    }
+
+    // Save response to localStorage
+    function saveResponse(key, value) {
+      const responses = JSON.parse(localStorage.getItem('responses') || '{}');
+      responses[key] = value;
+      localStorage.setItem('responses', JSON.stringify(responses));
+      return true;
+    }
+
+    // Load responses from localStorage
+    function loadResponses() {
+      return JSON.parse(localStorage.getItem('responses') || '{}');
+    }
+
+    // Find the first incomplete pair
+    async function findFirstIncompletePair() {
+      const responses = loadResponses();
+      
+      for (let i = 1; i <= Object.keys(allPairs).length; i++) {
+        if (!responses[`pair_${i}_quality`]) {
+          return i;
+        }
+        if (!responses[`pair_${i}_alignment`]) {
+          window.location.href = `alignment.html?pair=${i}`;
+          return;
+        }
+      }
+      return Object.keys(allPairs).length;
+    }
+
+    // Add these new functions
+    const modal = document.getElementById('imageModal');
+    const modalImg = document.getElementById('modalImage');
+    const closeBtn = document.querySelector('.modal-close');
+
+    // Function to open modal
+    function showImage(imgSrc) {
+      modal.style.display = "block";
+      modalImg.src = imgSrc;
+    }
+
+    // Close modal when clicking the × button
+    closeBtn.onclick = function() {
+      modal.style.display = "none";
+    }
+
+    // Close modal when clicking outside the image
+    modal.onclick = function(e) {
+      if (e.target === modal) {
+        modal.style.display = "none";
+      }
+    }
+
+    // Close modal with Escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && modal.style.display === "block") {
+        modal.style.display = "none";
+      }
+    });
+
+    // Modify your initializePage function to add click handlers
+    async function initializePage() {
+      const currentPair = parseInt(new URLSearchParams(window.location.search).get('pair')) || await findFirstIncompletePair();
+      
+      document.getElementById('currentPair').textContent = currentPair;
+      document.getElementById('totalPairs').textContent = Object.keys(allPairs).length;
+
+      const pairData = allPairs[currentPair];
+      if (pairData) {
+        const img1 = document.getElementById('img1');
+        const img2 = document.getElementById('img2');
+        
+        img1.src = pairData.image1;
+        img2.src = pairData.image2;
+
+        // Add click handlers for enlargement
+        img1.onclick = function() { showImage(pairData.image1); }
+        img2.onclick = function() { showImage(pairData.image2); }
+      }
+    }
+
+    // Reset all choices
+    function resetAllChoices() {
+      if (confirm('Are you sure you want to reset all your choices? This cannot be undone.')) {
+        localStorage.removeItem('responses');
+        localStorage.removeItem('evaluationSessionId');
+        window.location.href = 'quality.html?pair=1';
+      }
+    }
+
+    // Handle form submission
+    document.getElementById('qualityForm').addEventListener('submit', function(evt) {
+      evt.preventDefault();
+      const currentPair = parseInt(new URLSearchParams(window.location.search).get('pair')) || 1;
+      const choice = document.querySelector('input[name=quality]:checked').value;
+
+      try {
+        // Save the choice immediately to localStorage
+        const success = saveResponse(`pair_${currentPair}_quality`, choice);
+        
+        if (success) {
+          window.location.href = `alignment.html?pair=${currentPair}`;
+        } else {
+          alert('Error saving your choice. Please try again.');
+        }
+      } catch (error) {
+        console.error('Error saving choice:', error);
+        alert('Error saving your choice. Please try again.');
+      }
+    });
+
+    // Initialize the page when loaded
+    initializePage();
+
+    // Add this function to your existing JavaScript
+    function downloadResponses() {
+      const responses = loadResponses();
+      
+      // Check if there are any responses
+      if (Object.keys(responses).length === 0) {
+          alert('No responses to download yet. Please complete at least one evaluation.');
+          return;
+      }
+
+      // Add timestamp and metadata to the download
+      const downloadData = {
+          timestamp: new Date().toISOString(),
+          totalPairs: Object.keys(allPairs).length,
+          responses: responses
+      };
+
+      const dataStr = JSON.stringify(downloadData, null, 2);
+      const dataBlob = new Blob([dataStr], { type: 'application/json' });
+      const url = URL.createObjectURL(dataBlob);
+      const link = document.createElement('a');
+      link.href = url;
+      
+      // Add timestamp to filename
+      const date = new Date().toISOString().split('T')[0];
+      link.download = `image_evaluation_responses_${date}.json`;
+      
+      // Show feedback
+      const downloadButton = document.querySelector('.download-button');
+      const originalText = downloadButton.innerHTML;
+      downloadButton.innerHTML = '<span class="button-icon">✅</span> Downloaded!';
+      
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
+
+      // Reset button text after 2 seconds
+      setTimeout(() => {
+          downloadButton.innerHTML = originalText;
+      }, 2000);
+    }
+  </script>
+</body>
+</html>
