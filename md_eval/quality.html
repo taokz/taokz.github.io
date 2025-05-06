@@ -224,22 +224,102 @@
   </div>
 
   <script>
-    // All pairs data
-    const allPairs = {
-      1: {
-        image1: 'https://picsum.photos/id/237/600/600',
-        image2: 'https://picsum.photos/id/238/600/600'
-      },
-      2: {
-        image1: 'https://picsum.photos/id/239/600/600',
-        image2: 'https://picsum.photos/id/240/600/600'
-      },
-      3: {
-        image1: 'https://picsum.photos/id/241/600/600',
-        image2: 'https://picsum.photos/id/242/600/600'
-      }
-      // Add more pairs as needed
-    };
+    // Add this before allPairs definition
+    async function loadPairsFromCSV() {
+        try {
+            const response = await fetch('./images/human_eval_paired_samples_by_cui_string_60_with_captions.csv');
+            const csvText = await response.text();
+            const lines = csvText.split('\n');
+            const pairs = {};
+            
+            // Skip header row
+            for (let i = 1; i < lines.length; i++) {
+                if (!lines[i].trim()) continue;
+                
+                // Parse CSV line properly handling commas in captions
+                const row = parseCSVLine(lines[i]);
+                if (row.length < 7) continue; // Skip invalid lines
+                
+                const [id1, id2, cluster1, cluster2, cuis, caption1, caption2] = row;
+                
+                // In quality.html
+                pairs[i] = {
+                    image1: `./images/human_eval_paired_samples_by_cui_string_60/cluster_${cluster1}_${id1}.jpg`,
+                    image2: `./images/human_eval_paired_samples_by_cui_string_60/cluster_${cluster2}_${id2}.jpg`
+                };
+                
+                // In alignment.html, use this version instead:
+                /*
+                pairs[i] = {
+                    image1: {
+                        src: `./images/human_eval_paired_samples_by_cui_string_60/cluster_${cluster1}_${id1}.jpg`,
+                        caption: caption1
+                    },
+                    image2: {
+                        src: `./images/human_eval_paired_samples_by_cui_string_60/cluster_${cluster2}_${id2}.jpg`,
+                        caption: caption2
+                    }
+                };
+                */
+            }
+            return pairs;
+        } catch (error) {
+            console.error('Error loading CSV:', error);
+            // Fallback to default pairs if CSV loading fails
+            return {
+                1: {
+                    image1: './images/human_eval_paired_samples_by_cui_string_60/cluster_0_ROCOv2_2023_train_057368.jpg',
+                    image2: './images/human_eval_paired_samples_by_cui_string_60/cluster_1_ROCOv2_2023_train_036981.jpg'
+                }
+            };
+        }
+    }
+
+    // Add this helper function to properly parse CSV lines
+    function parseCSVLine(line) {
+        const result = [];
+        let startValueIndex = 0;
+        let inQuotes = false;
+        
+        for (let i = 0; i < line.length; i++) {
+            if (line[i] === '"') {
+                inQuotes = !inQuotes;
+            } else if (line[i] === ',' && !inQuotes) {
+                result.push(line.substring(startValueIndex, i).trim().replace(/^"|"$/g, ''));
+                startValueIndex = i + 1;
+            }
+        }
+        
+        // Add the last value
+        result.push(line.substring(startValueIndex).trim().replace(/^"|"$/g, ''));
+        
+        return result;
+    }
+
+    // Modify the initialization
+    let allPairs = {};
+
+    // Initialize the page with CSV data
+    async function initializePage() {
+        allPairs = await loadPairsFromCSV();
+        const currentPair = parseInt(new URLSearchParams(window.location.search).get('pair')) || 1;
+        
+        document.getElementById('currentPair').textContent = currentPair;
+        document.getElementById('totalPairs').textContent = Object.keys(allPairs).length;
+
+        const pairData = allPairs[currentPair];
+        if (pairData) {
+            const img1 = document.getElementById('img1');
+            const img2 = document.getElementById('img2');
+            
+            img1.src = pairData.image1;
+            img2.src = pairData.image2;
+
+            // Add click handlers for enlargement
+            img1.onclick = function() { showImage(pairData.image1); }
+            img2.onclick = function() { showImage(pairData.image2); }
+        }
+    }
 
     // Generate or retrieve session ID
     let sessionId = localStorage.getItem('evaluationSessionId');
@@ -307,27 +387,6 @@
       }
     });
 
-    // Modify your initializePage function to add click handlers
-    async function initializePage() {
-      const currentPair = parseInt(new URLSearchParams(window.location.search).get('pair')) || await findFirstIncompletePair();
-      
-      document.getElementById('currentPair').textContent = currentPair;
-      document.getElementById('totalPairs').textContent = Object.keys(allPairs).length;
-
-      const pairData = allPairs[currentPair];
-      if (pairData) {
-        const img1 = document.getElementById('img1');
-        const img2 = document.getElementById('img2');
-        
-        img1.src = pairData.image1;
-        img2.src = pairData.image2;
-
-        // Add click handlers for enlargement
-        img1.onclick = function() { showImage(pairData.image1); }
-        img2.onclick = function() { showImage(pairData.image2); }
-      }
-    }
-
     // Reset all choices
     function resetAllChoices() {
       if (confirm('Are you sure you want to reset all your choices? This cannot be undone.')) {
@@ -358,8 +417,8 @@
       }
     });
 
-    // Initialize the page when loaded
-    initializePage();
+    // Initialize when document is ready
+    document.addEventListener('DOMContentLoaded', initializePage);
 
     // Add this function to your existing JavaScript
     function downloadResponses() {
