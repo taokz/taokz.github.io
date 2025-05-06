@@ -2,49 +2,72 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Image Evaluation Study</title>
+    <title>Medical Image Evaluation Study</title>
     <style>
         body {
-            font-family: sans-serif;
-            margin: 40px;
-            max-width: 800px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0 auto;
+            max-width: 800px;
             padding: 20px;
+            line-height: 1.6;
+            color: #333;
+        }
+        h1, h2, h3 {
+            color: #0056b3;
         }
         .start-button {
             display: inline-block;
-            padding: 10px 20px;
+            padding: 12px 25px;
             background-color: #007bff;
             color: white;
             text-decoration: none;
-            border-radius: 4px;
+            border-radius: 5px;
             margin-top: 20px;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
         }
         .start-button:hover {
             background-color: #0056b3;
         }
+        ul {
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 8px;
+        }
+        .notes {
+            background-color: #f8f9fa;
+            border-left: 4px solid #007bff;
+            padding: 15px;
+            margin-top: 30px;
+        }
     </style>
 </head>
 <body>
-    <h1>Image Evaluation Study</h1>
+    <h1>Medical Image Evaluation Study</h1>
     
-    <h2>Welcome!</h2>
-    <p>In this study, you will be asked to evaluate pairs of images based on:</p>
+    <h2>Welcome, Evaluator!</h2>
+    <p>Thank you for participating in this important study. Your medical expertise is invaluable in helping us assess and improve the quality and relevance of medical imaging data.</p>
+    <p>In this study, you will be presented with pairs of medical images. For each pair, you will perform two main tasks:</p>
     <ul>
-        <li>Image quality/clarity</li>
-        <li>Alignment with given captions</li>
+        <li><strong>Image Quality Assessment:</strong> You will evaluate and select the image that you perceive to be of higher diagnostic quality based on established imaging criteria.</li>
+        <li><strong>Image-Caption Alignment:</strong> You will assess how well each image aligns with its accompanying descriptive text (caption) and select the image that demonstrates better alignment.</li>
     </ul>
 
-    <p>Your responses will be saved locally in your browser, and you can resume from where you left off if you close the page.</p>
+    <p>Your selections will help us understand preferences and develop better systems for medical image presentation and analysis. All responses are saved locally in your browser, allowing you to pause and resume the evaluation at your convenience.</p>
 
-    <a href="quality.html" class="start-button">Start Evaluation</a>
+    <a href="quality.html?pair=1" class="start-button">Start Evaluation</a>
 
-    <h3>Important Notes:</h3>
-    <ul>
-        <li>Your responses are saved in your browser's local storage</li>
-        <li>You can use the reset button if you want to start over</li>
-        <li>The evaluation consists of multiple image pairs</li>
-        <li>For each pair, you'll make two judgments: quality and alignment</li>
-    </ul>
+    <div class="notes">
+        <h3>Key Information:</h3>
+        <ul>
+            <li><strong>Confidentiality:</strong> All image data and your responses will be handled with strict confidentiality.</li>
+            <li><strong>Local Storage:</strong> Your progress is saved automatically in your web browser's local storage.</li>
+            <li><strong>Navigation:</strong> You can move between image pairs and evaluation tasks (quality and alignment).</li>
+            <li><strong>Reset Option:</strong> If you need to restart the evaluation from the beginning, a "Reset All Choices" button is available on the evaluation pages.</li>
+            <li><strong>Download Responses:</strong> Upon completion or at any point, you can download your responses as a JSON file.</li>
+            <li>The evaluation consists of multiple image pairs, each requiring judgments on both quality and caption alignment.</li>
+        </ul>
+    </div>
 </body>
-</html> 
+</html>

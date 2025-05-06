@@ -2,12 +2,37 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Image Quality Selection</title>
+  <title>Task A: Image Quality Assessment</title>
   <style>
     body {
-      font-family: sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       margin: 40px;
       text-align: center;
+      line-height: 1.6;
+      color: #333;
+    }
+    h1, h2 {
+      color: #0056b3;
+    }
+    .criteria-section {
+      text-align: left;
+      max-width: 700px;
+      margin: 20px auto;
+      padding: 15px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      background-color: #f9f9f9;
+    }
+    .criteria-section h3 {
+      margin-top: 0;
+      color: #0056b3;
+    }
+    .criteria-section ul {
+      padding-left: 20px;
+      list-style-type: disc;
+    }
+    .criteria-section li {
+      margin-bottom: 8px;
     }
     .images {
       display: flex;
@@ -22,6 +47,11 @@
       max-width: 250px;
       height: auto;
       border: 1px solid #ccc;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    .image-box img:hover {
+      transform: scale(1.05);
     }
     .unsure-option {
       margin: 20px 0;
@@ -69,101 +99,93 @@
       font-weight: bold;
       cursor: pointer;
     }
-    .image-box img {
-      cursor: pointer;
-      transition: transform 0.2s;
-    }
-    .image-box img:hover {
-      transform: scale(1.05);
-    }
     .button-container {
-        margin: 20px 0;
-        display: flex;
-        justify-content: center;
-        gap: 20px;
+      margin: 20px 0;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
     }
-
     .download-button {
-        padding: 10px 20px;
-        background-color: #4CAF50;  /* Green color */
-        color: white;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-        font-size: 16px;
-        display: flex;
-        align-items: center;
-        gap: 8px;
+      padding: 10px 20px;
+      background-color: #4CAF50;  /* Green color */
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
-
     .download-button:hover {
-        background-color: #45a049;
+      background-color: #45a049;
     }
-
     .reset-button {
-        padding: 10px 20px;
-        background-color: #ff4444;
-        color: white;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-        font-size: 16px;
-        display: flex;
-        align-items: center;
-        gap: 8px;
+      padding: 10px 20px;
+      background-color: #ff4444;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
-
     .reset-button:hover {
-        background-color: #ff0000;
+      background-color: #ff0000;
     }
-
-    /* Add icon styles */
     .button-icon {
-        font-size: 20px;
+      font-size: 20px;
     }
-
     .nav-buttons {
-        display: flex;
-        justify-content: center;
-        gap: 20px;
-        margin: 20px 0;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin: 20px 0;
     }
-
     .nav-button {
-        padding: 10px 20px;
-        background-color: #007bff;
-        color: white;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-        font-size: 16px;
-        display: flex;
-        align-items: center;
-        gap: 8px;
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
     }
-
     .nav-button:hover {
-        background-color: #0056b3;
+      background-color: #0056b3;
     }
-
     .nav-button:disabled {
-        background-color: #cccccc;
-        cursor: not-allowed;
+      background-color: #cccccc;
+      cursor: not-allowed;
     }
-
     .home-button {
-        background-color: #6c757d;
+      background-color: #6c757d;
     }
-
     .home-button:hover {
-        background-color: #5a6268;
+      background-color: #5a6268;
     }
   </style>
 </head>
 <body>
-  <h1>Website Title</h1>
+  <h1>Medical Image Evaluation</h1>
   <div class="progress">Pair <span id="currentPair">1</span> of <span id="totalPairs">3</span></div>
-  <h2>Task a: Select one image that is more clear / high quality</h2>
+  <h2>Task A: Image Quality Assessment - Select the Superior Image</h2>
+
+  <div class="criteria-section">
+    <h3>Please consider the following key quality attributes when evaluating the images:</h3>
+    <ul>
+      <li><strong>Artifacts:</strong> Distortions or errors in the image that are not related to the subject's anatomy (e.g., motion ghosting in MRI, metal streaks in CT, ring artifacts). These can obscure or be mistaken for pathology.</li>
+      <li><strong>Blur:</strong> Lack of sharpness or distinctness of image details (e.g., from patient/probe motion or focus issues in endoscopy/ultrasound). Subtle pathologies may be missed if fine textures are blurred.</li>
+      <li><strong>Noise:</strong> Random variations in pixel intensity that degrade image quality (e.g., speckle noise in ultrasound, photon shot noise in low-dose imaging). Excessive noise can obscure anatomical boundaries.</li>
+      <li><strong>Contrast and Illumination:</strong> The difference in visual properties that makes an object distinguishable from other objects and the background. Poor local contrast or uneven illumination (e.g., bias fields in MRI) can reduce the visibility of lesions and edges.</li>
+      <li><strong>Region of Interest (ROI) Visibility:</strong> The clarity and discernibility of clinically relevant structures (e.g., tumors, vessels, organs, specific tissues). This plays a vital role in perceived image quality and diagnostic confidence.</li>
+    </ul>
+  </div>
 
   <form id="qualityForm">
     <div class="images">
@@ -189,42 +211,46 @@
 
     <div class="unsure-option">
       <label>
-        <input type="radio" name="quality" value="unsure">
-        c. Unsure
+        <input type="radio" name="quality" value="equal">
+        c. Equal Quality
+      </label>
+    </div>
+
+    <div class="unsure-option">
+      <label>
+        <input type="radio" name="quality" value="cannot_judge">
+        d. Cannot Judge
       </label>
     </div>
 
     <div class="nav-buttons">
-        <button type="button" id="prevButton" class="nav-button" onclick="goToPrevious()">
-            <span class="button-icon">⬅️</span> Previous
-        </button>
-        <button type="submit" class="nav-button">
-            Next <span class="button-icon">➡️</span>
-        </button>
-        <button type="button" class="nav-button home-button" onclick="window.location.href='index.html'">
-            <span class="button-icon">🏠</span> Return to Index
-        </button>
+      <button type="button" id="prevButton" class="nav-button" onclick="goToPrevious()">
+        <span class="button-icon">⬅️</span> Previous
+      </button>
+      <button type="submit" class="nav-button">
+        Next <span class="button-icon">➡️</span>
+      </button>
+      <button type="button" class="nav-button home-button" onclick="window.location.href='index.html'">
+        <span class="button-icon">🏠</span> Return to Index
+      </button>
     </div>
   </form>
 
-  <!-- This is the download and reset buttons container -->
   <div class="button-container">
     <button type="button" class="download-button" onclick="downloadResponses()" style="display: flex !important;">
-        <span class="button-icon">⬇️</span> Download Responses
+      <span class="button-icon">⬇️</span> Download Responses
     </button>
     <button type="button" class="reset-button" onclick="resetAllChoices()">
-        <span class="button-icon">🔄</span> Reset All Choices
+      <span class="button-icon">🔄</span> Reset All Choices
     </button>
   </div>
 
-  <!-- Modal div comes after -->
   <div id="imageModal" class="modal">
     <span class="modal-close">&times;</span>
     <img id="modalImage" src="" alt="Enlarged image">
   </div>
 
   <script>
-    // Add this before allPairs definition
     async function loadPairsFromCSV() {
         try {
             const response = await fetch('./images/human_eval_paired_samples_by_cui_string_60_with_captions.csv');
@@ -275,7 +301,6 @@
         }
     }
 
-    // Add this helper function to properly parse CSV lines
     function parseCSVLine(line) {
         const result = [];
         let startValueIndex = 0;
@@ -296,10 +321,8 @@
         return result;
     }
 
-    // Modify the initialization
     let allPairs = {};
 
-    // Initialize the page with CSV data
     async function initializePage() {
         allPairs = await loadPairsFromCSV();
         const currentPair = parseInt(new URLSearchParams(window.location.search).get('pair')) || 1;
@@ -321,14 +344,12 @@
         }
     }
 
-    // Generate or retrieve session ID
     let sessionId = localStorage.getItem('evaluationSessionId');
     if (!sessionId) {
       sessionId = Date.now() + '_' + Math.random().toString(36).substr(2, 9);
       localStorage.setItem('evaluationSessionId', sessionId);
     }
 
-    // Save response to localStorage
     function saveResponse(key, value) {
       const responses = JSON.parse(localStorage.getItem('responses') || '{}');
       responses[key] = value;
@@ -336,12 +357,10 @@
       return true;
     }
 
-    // Load responses from localStorage
     function loadResponses() {
       return JSON.parse(localStorage.getItem('responses') || '{}');
     }
 
-    // Find the first incomplete pair
     async function findFirstIncompletePair() {
       const responses = loadResponses();
       
@@ -357,37 +376,31 @@
       return Object.keys(allPairs).length;
     }
 
-    // Add these new functions
     const modal = document.getElementById('imageModal');
     const modalImg = document.getElementById('modalImage');
     const closeBtn = document.querySelector('.modal-close');
 
-    // Function to open modal
     function showImage(imgSrc) {
       modal.style.display = "block";
       modalImg.src = imgSrc;
     }
 
-    // Close modal when clicking the × button
     closeBtn.onclick = function() {
       modal.style.display = "none";
     }
 
-    // Close modal when clicking outside the image
     modal.onclick = function(e) {
       if (e.target === modal) {
         modal.style.display = "none";
       }
     }
 
-    // Close modal with Escape key
     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape' && modal.style.display === "block") {
         modal.style.display = "none";
       }
     });
 
-    // Reset all choices
     function resetAllChoices() {
       if (confirm('Are you sure you want to reset all your choices? This cannot be undone.')) {
         localStorage.removeItem('responses');
@@ -396,7 +409,6 @@
       }
     }
 
-    // Handle form submission
     document.getElementById('qualityForm').addEventListener('submit', function(evt) {
       evt.preventDefault();
       const currentPair = parseInt(new URLSearchParams(window.location.search).get('pair')) || 1;
@@ -417,10 +429,8 @@
       }
     });
 
-    // Initialize when document is ready
     document.addEventListener('DOMContentLoaded', initializePage);
 
-    // Add this function to your existing JavaScript
     function downloadResponses() {
       const responses = loadResponses();
       
@@ -463,7 +473,6 @@
       }, 2000);
     }
 
-    // Add this after your other functions
     function goToPrevious() {
         const currentPair = parseInt(new URLSearchParams(window.location.search).get('pair')) || 1;
         

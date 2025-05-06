@@ -2,12 +2,37 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Image–Caption Alignment</title>
+  <title>Task B: Image-Caption Alignment Assessment</title>
   <style>
     body {
-      font-family: sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       margin: 40px;
       text-align: center;
+      line-height: 1.6;
+      color: #333;
+    }
+    h1, h2 {
+      color: #0056b3;
+    }
+    .criteria-section {
+      text-align: left;
+      max-width: 700px;
+      margin: 20px auto;
+      padding: 15px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      background-color: #f9f9f9;
+    }
+    .criteria-section h3 {
+      margin-top: 0;
+      color: #0056b3;
+    }
+    .criteria-section ul {
+      padding-left: 20px;
+      list-style-type: disc;
+    }
+    .criteria-section li {
+      margin-bottom: 8px;
     }
     .images {
       display: flex;
@@ -23,10 +48,19 @@
       max-width: 100%;
       height: auto;
       border: 1px solid #ccc;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    .image-box img:hover {
+      transform: scale(1.05);
     }
     .caption {
       font-style: italic;
       margin: 10px 0;
+      padding: 10px;
+      background-color: #f5f5f5;
+      border-radius: 4px;
+      border: 1px solid #ddd;
     }
     .unsure-option {
       margin: 20px 0;
@@ -137,21 +171,23 @@
         font-weight: bold;
         cursor: pointer;
     }
-
-    .image-box img {
-        cursor: pointer;
-        transition: transform 0.2s;
-    }
-
-    .image-box img:hover {
-        transform: scale(1.05);
-    }
   </style>
 </head>
 <body>
-  <h1>Website Title</h1>
+  <h1>Medical Image Evaluation</h1>
   <div class="progress">Pair <span id="currentPair">1</span> of <span id="totalPairs">3</span></div>
-  <h2>Task b: Select one image that is more aligned with the text / caption</h2>
+  <h2>Task B: Image-Caption Alignment Assessment</h2>
+
+  <div class="criteria-section">
+    <h3>Please consider the following aspects when evaluating image-caption alignment:</h3>
+    <ul>
+      <li><strong>Content Match:</strong> Does the image show the specific anatomical structures, medical conditions, or procedures mentioned in the caption?</li>
+      <li><strong>Anatomical Perspective:</strong> Does the image show the correct anatomical view or angle described in the caption (e.g., axial, sagittal, anterior, lateral)?</li>
+      <li><strong>Pathology Visibility:</strong> Are the abnormalities or conditions mentioned in the caption clearly visible in the image?</li>
+      <li><strong>Technical Details:</strong> Do the imaging parameters or technical aspects mentioned in the caption match what's visible in the image?</li>
+      <li><strong>Annotations Match:</strong> If the caption refers to specific markers, arrows, or annotations, are these visible and correctly placed in the image?</li>
+    </ul>
+  </div>
 
   <div id="info"></div>
 
@@ -163,7 +199,7 @@
         <div>
           <label>
             <input type="radio" name="alignment" value="image1" required>
-            Image 1
+            a. Image 1
           </label>
         </div>
       </div>
@@ -173,7 +209,7 @@
         <div>
           <label>
             <input type="radio" name="alignment" value="image2">
-            Image 2
+            b. Image 2
           </label>
         </div>
       </div>
@@ -181,8 +217,15 @@
 
     <div class="unsure-option">
       <label>
-        <input type="radio" name="alignment" value="unsure">
-        Unsure
+        <input type="radio" name="alignment" value="equal">
+        c. Equally Aligned
+      </label>
+    </div>
+
+    <div class="unsure-option">
+      <label>
+        <input type="radio" name="alignment" value="cannot_judge">
+        d. Cannot Judge
       </label>
     </div>
 
@@ -201,17 +244,16 @@
 
   <div class="button-container">
     <button type="button" class="download-button" onclick="downloadResponses()" style="display: flex !important;">
-        <span class="button-icon">⬇️</span> Download Responses
+      <span class="button-icon">⬇️</span> Download Responses
     </button>
     <button type="button" class="reset-button" onclick="resetAllChoices()">
-        <span class="button-icon">🔄</span> Reset All Choices
+      <span class="button-icon">🔄</span> Reset All Choices
     </button>
   </div>
 
-  <!-- Add this before the <script> tag -->
   <div id="imageModal" class="modal">
-      <span class="modal-close">&times;</span>
-      <img id="modalImage" src="" alt="Enlarged image">
+    <span class="modal-close">&times;</span>
+    <img id="modalImage" src="" alt="Enlarged image">
   </div>
 
   <script>
