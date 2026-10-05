@@ -2,6 +2,7 @@ name: Get Citation Data
 
 on: 
  page_build: 
+ workflow_dispatch:
  schedule:
   - cron:  '0 8 * * *'
 
@@ -9,15 +10,19 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
-    - uses: actions/setup-python@v5
+    - uses: actions/checkout@v5
+    - uses: actions/setup-python@v6
       with:
         python-version: '3.11'
     - name: Run
       run: |
         cd ./google_scholar_crawler
         pip3 install -r requirements.txt
-        python3 main.py
+        # Google Scholar often blocks GitHub runners; give up after 5 min and keep the previous data
+        if ! timeout 300 python3 main.py; then
+          echo "::warning::Google Scholar blocked or timed out; keeping previous citation data"
+          exit 0
+        fi
         cd ./results
         git init
         git config --local user.name "${GITHUB_ACTOR}"
@@ -28,3 +33,4 @@ jobs:
         git push "${remote_repo}" HEAD:google-scholar-stats --force
       env: 
         GOOGLE_SCHOLAR_ID: ${{ secrets.GOOGLE_SCHOLAR_ID }}
+        SCRAPER_API_KEY: ${{ secrets.SCRAPER_API_KEY }}
