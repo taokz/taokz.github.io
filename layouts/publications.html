@@ -1,0 +1,18 @@
+{{- define "main" }}
+<header class="page-header">
+  <h1>{{ .Title }}</h1>
+  {{- with .Content }}<div class="page-subtitle">{{ . }}</div>{{ end }}
+</header>
+{{- $papers := hugo.Data.publications.papers }}
+{{- $years := slice }}
+{{- range $papers }}{{ $years = $years | append .year }}{{ end }}
+{{- range sort ($years | uniq) "value" "desc" }}
+{{- $y := . }}
+<section class="pub-year" aria-labelledby="y{{ $y }}">
+  <h2 class="pub-year-label" id="y{{ $y }}">{{ $y }}</h2>
+  <ul class="paper-list">
+    {{- range where $papers "year" $y }}{{ partial "paper.html" . }}{{ end }}
+  </ul>
+</section>
+{{- end }}
+{{- end }}

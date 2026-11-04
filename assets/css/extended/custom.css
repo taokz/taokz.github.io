@@ -1,0 +1,660 @@
+/* ==========================================================================
+   Site styles layered on top of PaperMod.
+   Text-first, single ~640px column, serif body / sans headings & meta.
+   ========================================================================== */
+
+:root {
+    --serif: "Source Serif 4", "Source Serif Pro", Georgia, "Times New Roman", serif;
+    --sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    --mono: ui-monospace, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+
+    --main-width: 640px;
+    --nav-width: 640px;
+    --gap: 24px;
+    --content-gap: 1.25rem;
+    --radius: 4px;
+
+    --theme: #fdfcf9;
+    --entry: #fdfcf9;
+    --primary: #1c1c1c;
+    --secondary: #6d6a65;
+    --tertiary: #d9d5ce;
+    --content: #262523;
+    --code-bg: #f1efea;
+    --code-block-bg: #f6f5f1;
+    --border: #e7e3dc;
+    --link: #3d5f78;
+    --link-hover: #1f3d55;
+    --placeholder: #a5671d;
+}
+
+:root[data-theme="dark"] {
+    --theme: #161718;
+    --entry: #161718;
+    --primary: #e6e4df;
+    --secondary: #9a968f;
+    --tertiary: #3a3a3c;
+    --content: #d4d1cb;
+    --code-bg: #232427;
+    --code-block-bg: #1d1e21;
+    --border: #2c2d30;
+    --link: #93b3cb;
+    --link-hover: #bfd5e6;
+    --placeholder: #d9a35f;
+}
+
+/* PaperMod paints list pages grey; keep one background everywhere. */
+.list,
+[data-theme="dark"] .list {
+    background: var(--theme);
+}
+
+body {
+    font-family: var(--serif);
+    font-size: 19px;
+    line-height: 1.65;
+    color: var(--content);
+    background: var(--theme);
+    font-feature-settings: "kern", "liga", "onum";
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4, h5, h6,
+.header, .footer, .post-meta, .toc, .toc-side,
+.section-label, .theme-title, .post-row-date, .page-subtitle,
+.paper-links, .more-link, .todo-tag, .pub-year-label, .copy-code {
+    font-family: var(--sans);
+}
+
+code, pre, kbd, samp {
+    font-family: var(--mono);
+}
+
+a {
+    color: var(--link);
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--link-hover);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.18em;
+}
+
+::selection {
+    background: color-mix(in srgb, var(--link) 22%, transparent);
+}
+
+.sep {
+    color: var(--tertiary);
+}
+
+/* ---- Header --------------------------------------------------------------- */
+
+.header-nav {
+    padding-top: 1.25rem;
+    line-height: 2.5rem;
+}
+
+.logo a {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--primary);
+    letter-spacing: -0.005em;
+}
+
+#menu a {
+    font-size: 15px;
+    color: var(--secondary);
+}
+
+#menu li + li {
+    margin-inline-start: 1.1rem;
+}
+
+#menu a:hover,
+#menu .active {
+    color: var(--primary);
+    font-weight: 400;
+    border-bottom: none;
+    text-decoration: none;
+}
+
+/* ---- Main column ------------------------------------------------------------ */
+
+.main {
+    min-height: calc(100vh - 9rem);
+    padding-top: 3rem;
+    padding-bottom: 4rem;
+}
+
+.page-header,
+.post-header {
+    margin: 0 0 2.5rem;
+}
+
+.page-header h1,
+.post-title {
+    font-size: 2rem;
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: -0.015em;
+    color: var(--primary);
+}
+
+.page-subtitle,
+.post-description {
+    margin-top: 0.5rem;
+    font-size: 1rem;
+    color: var(--secondary);
+}
+
+.post-description {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 1.1rem;
+}
+
+.page-subtitle p { margin: 0; }
+
+.post-meta {
+    margin-top: 0.75rem;
+    font-size: 14px;
+    color: var(--secondary);
+}
+
+/* ---- Home -------------------------------------------------------------------- */
+
+.home-intro {
+    margin-bottom: 1.75rem;
+}
+
+.home-name {
+    font-size: 2.1rem;
+    font-weight: 600;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    color: var(--primary);
+}
+
+.native-name {
+    font-weight: 400;
+    color: var(--secondary);
+    letter-spacing: 0;
+}
+
+.home-title {
+    margin-top: 0.5rem;
+    font-family: var(--sans);
+    font-size: 15px;
+    color: var(--secondary);
+}
+
+.home-statement {
+    font-size: 1.05rem;
+}
+
+.home-statement.is-placeholder {
+    padding: 0.9rem 1.1rem;
+    border: 1px dashed var(--placeholder);
+    border-radius: var(--radius);
+}
+
+.home-links {
+    margin-top: 1.5rem;
+    font-family: var(--sans);
+    font-size: 15px;
+}
+
+.home-section {
+    margin-top: 4rem;
+}
+
+.section-label {
+    margin-bottom: 1.5rem;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--secondary);
+}
+
+.research-theme + .research-theme {
+    margin-top: 2.25rem;
+}
+
+.theme-title {
+    font-size: 1.02rem;
+    font-weight: 600;
+    color: var(--primary);
+}
+
+.theme-desc {
+    margin: 0.2rem 0 1rem;
+    font-size: 0.95rem;
+    line-height: 1.55;
+    font-style: italic;
+    color: var(--secondary);
+}
+
+.more-link {
+    margin-top: 1.25rem;
+    font-size: 14px;
+}
+
+/* ---- Papers (home + /publications) -------------------------------------------- */
+
+.paper-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.paper {
+    margin: 0 0 1.15rem;
+    line-height: 1.5;
+}
+
+.paper > span:not(.todo-tag) {
+    display: block;
+}
+
+.paper > .paper-title {
+    display: inline;
+    color: var(--primary);
+}
+
+.paper-authors {
+    margin-top: 0.15rem;
+    font-size: 0.86rem;
+    color: var(--secondary);
+}
+
+.paper-authors strong {
+    font-weight: 600;
+    color: var(--content);
+}
+
+.paper-meta {
+    font-size: 0.86rem;
+    color: var(--secondary);
+}
+
+.paper-links {
+    font-size: 13.5px;
+}
+
+.paper-links::before {
+    content: "\00a0\00a0";
+}
+
+.todo-tag {
+    display: inline-block;
+    margin-inline-start: 0.4rem;
+    padding: 0 0.4rem;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    line-height: 1.6;
+    vertical-align: 0.15em;
+    color: var(--placeholder);
+    border: 1px dashed var(--placeholder);
+    border-radius: 3px;
+}
+
+.pub-year + .pub-year {
+    margin-top: 2.5rem;
+}
+
+.pub-year-label {
+    margin-bottom: 1rem;
+    padding-bottom: 0.35rem;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--secondary);
+    border-bottom: 1px solid var(--border);
+    font-variant-numeric: tabular-nums;
+}
+
+/* ---- Post lists (home + /writing) ---------------------------------------------- */
+
+.post-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.post-row {
+    display: grid;
+    grid-template-columns: 5.5rem 1fr;
+    column-gap: 1.25rem;
+    align-items: baseline;
+    margin-bottom: 1.15rem;
+}
+
+.post-row-date {
+    font-size: 13px;
+    color: var(--secondary);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+}
+
+.post-row-title {
+    color: var(--primary);
+    font-size: 1.05rem;
+    line-height: 1.4;
+}
+
+.post-row-title:hover {
+    color: var(--link-hover);
+}
+
+.post-row-subtitle {
+    display: block;
+    margin-top: 0.1rem;
+    font-size: 0.92rem;
+    line-height: 1.5;
+    color: var(--secondary);
+}
+
+.post-list-full .post-row {
+    margin-bottom: 1.5rem;
+}
+
+@media (max-width: 520px) {
+    .post-row {
+        grid-template-columns: 1fr;
+    }
+    .post-row-date {
+        order: 2;
+        margin-top: 0.15rem;
+    }
+}
+
+/* ---- Post body ------------------------------------------------------------------ */
+
+.post-content {
+    font-size: 19px;
+    line-height: 1.7;
+    color: var(--content);
+}
+
+.md-content h1,
+.md-content h2,
+.md-content h3,
+.md-content h4 {
+    color: var(--primary);
+    font-weight: 600;
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+}
+
+.md-content h2 {
+    margin: 2.75rem 0 1rem;
+    font-size: 1.45rem;
+}
+
+.md-content h3 {
+    margin: 2rem 0 0.75rem;
+    font-size: 1.15rem;
+}
+
+.md-content h4 {
+    margin: 1.5rem 0 0.5rem;
+    font-size: 1rem;
+}
+
+.md-content a:not(.anchor) {
+    color: var(--link);
+    text-decoration: underline;
+    text-decoration-color: color-mix(in srgb, var(--link) 35%, transparent);
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.18em;
+}
+
+.md-content a:not(.anchor):hover {
+    color: var(--link-hover);
+    text-decoration-color: currentColor;
+}
+
+.post-content .anchor {
+    color: var(--tertiary);
+}
+
+.md-content blockquote {
+    margin: 1.5rem 0;
+    padding: 0 0 0 1.1rem;
+    border-inline-start: 2px solid var(--border);
+    color: var(--secondary);
+}
+
+.md-content hr {
+    margin: 2.5rem auto;
+    width: 4rem;
+    height: 1px;
+    background: var(--border);
+}
+
+.md-content img {
+    margin: 1.5rem auto;
+    border-radius: 2px;
+}
+
+.md-content figure figcaption,
+.md-content figcaption {
+    margin-top: 0.5rem;
+    font-family: var(--sans);
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--secondary);
+    text-align: center;
+}
+
+/* Inline and block code */
+.post-content code {
+    font-size: 0.8em;
+    background: var(--code-bg);
+    color: var(--primary);
+}
+
+.md-content .highlight:not(table),
+.md-content pre code {
+    background: var(--code-block-bg) !important;
+    border: 1px solid var(--border);
+}
+
+.md-content pre code {
+    padding: 0.9rem 1rem;
+    font-size: 14.5px;
+    line-height: 1.55;
+    color: var(--content);
+    border: none;
+}
+
+.md-content .highlight pre,
+.md-content .highlight .chroma {
+    background: transparent !important;
+}
+
+.copy-code {
+    color: var(--secondary);
+    background: var(--code-bg);
+}
+
+/* Math (rendered at build time by KaTeX) */
+.post-content .katex {
+    font-size: 1.05em;
+}
+
+.post-content .katex-display {
+    margin: 1.5rem 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 0.25rem 0;
+}
+
+/* Footnotes */
+.footnotes {
+    margin-top: 3rem;
+    font-size: 0.88rem;
+    line-height: 1.6;
+    color: var(--secondary);
+}
+
+.footnotes hr {
+    width: 100%;
+    margin: 0 0 1.25rem;
+}
+
+.footnote-ref a,
+a.footnote-ref {
+    font-family: var(--sans);
+    font-size: 0.75em;
+    text-decoration: none !important;
+}
+
+.footnote-backref {
+    text-decoration: none !important;
+}
+
+/* ---- Table of contents ---------------------------------------------------------- */
+
+details.toc {
+    margin-bottom: 2.25rem;
+    padding: 0.6rem 1rem;
+    font-size: 14px;
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+}
+
+details.toc summary {
+    color: var(--secondary);
+    cursor: pointer;
+}
+
+details.toc .inner {
+    margin: 0.5rem 0 0.25rem;
+    padding: 0 0.25rem;
+}
+
+.toc ul,
+.toc-side ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.toc ul ul,
+.toc-side ul ul {
+    padding-inline-start: 0.9rem;
+}
+
+.toc li,
+.toc-side li {
+    margin: 0.3rem 0;
+    line-height: 1.4;
+}
+
+.toc a,
+.toc-side a {
+    color: var(--secondary);
+}
+
+.toc-side {
+    display: none;
+}
+
+/* Wide screens: the TOC moves into the left margin and stays put while reading. */
+@media (min-width: 1200px) {
+    .toc-side {
+        display: block;
+        position: fixed;
+        top: 7.5rem;
+        left: calc(50% - var(--main-width) / 2 - 15rem - 3rem);
+        width: 15rem;
+        max-height: calc(100vh - 10rem);
+        overflow-y: auto;
+        font-size: 13.5px;
+        line-height: 1.4;
+    }
+
+    .toc-side-label {
+        margin-bottom: 0.6rem;
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--secondary);
+    }
+
+    .toc-side a {
+        display: block;
+        padding-inline-start: 0.75rem;
+        border-inline-start: 1px solid var(--border);
+    }
+
+    .toc-side ul ul a {
+        border-inline-start: none;
+        padding-inline-start: 0.75rem;
+    }
+
+    .toc-side a:hover,
+    .toc-side a.active {
+        color: var(--primary);
+        text-decoration: none;
+    }
+
+    .toc-side > ul > li > a.active {
+        border-inline-start-color: var(--primary);
+    }
+
+    details.toc {
+        display: none;
+    }
+}
+
+/* ---- Footer --------------------------------------------------------------------- */
+
+.footer {
+    padding-bottom: 2.5rem;
+    font-size: 12.5px;
+    color: var(--secondary);
+}
+
+.footer a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.footer a:hover {
+    color: var(--primary);
+}
+
+.post-footer {
+    margin-top: 3rem;
+}
+
+/* ---- Small screens -------------------------------------------------------------- */
+
+@media (max-width: 640px) {
+    :root {
+        --gap: 16px;
+    }
+    body,
+    .post-content {
+        font-size: 18px;
+    }
+    .main {
+        padding-top: 2rem;
+    }
+    .home-name,
+    .page-header h1,
+    .post-title {
+        font-size: 1.7rem;
+    }
+}
