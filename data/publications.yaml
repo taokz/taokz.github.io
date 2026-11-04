@@ -20,25 +20,20 @@ papers:
   - id: radagents
     year: 2026
     title: "RadAgents: Multimodal Agentic Reasoning for Chest X-ray Interpretation with Radiologist-like Workflows"
-    authors: "TODO — author list"
+    authors: ""   # TODO: author list
     venue: "Medical Imaging with Deep Learning (MIDL)"
     links:
-      - { name: paper, url: "#" }   # TODO
-      - { name: code, url: "#" }    # TODO
-    placeholder: true
+      - { name: paper, url: "https://proceedings.mlr.press/v315/zhang26b.html" }
 
   - id: radfabric
     year: 2026
-    title: "RadFabric: TODO — full title"
-    authors: "TODO — author list"
-    venue: "TODO — venue"
-    # NOTE: Scholar also lists "Interpretable agentic AI system with localized
-    # reasoning for radiology" (npj Digital Medicine, 2026) below. If that is the
-    # published version of RadFabric, merge the two entries.
+    # Published version of RadFabric. Title from Google Scholar — check it
+    # against the article page.
+    title: "Interpretable Agentic AI System with Localized Reasoning for Radiology"
+    authors: ""   # TODO: author list
+    venue: "npj Digital Medicine"
     links:
-      - { name: paper, url: "#" }   # TODO
-      - { name: code, url: "#" }    # TODO
-    placeholder: true
+      - { name: paper, url: "https://www.nature.com/articles/s41746-026-02994-8" }
 
   - id: gpt5-medical-agent
     year: 2026
@@ -48,12 +43,6 @@ papers:
     links:
       - { name: paper, url: "#" }   # TODO
     placeholder: true
-
-  - id: interpretable-agentic-radiology
-    year: 2026
-    title: "Interpretable Agentic AI System with Localized Reasoning for Radiology"
-    authors: ""
-    venue: "npj Digital Medicine"
 
   - id: gpt4v-comparative
     year: 2026
@@ -123,6 +112,8 @@ papers:
     title: "Scaling Up Biomedical Vision-Language Models: Fine-Tuning, Instruction Tuning, and Multi-Modal Learning"
     authors: ""
     venue: "Journal of Biomedical Informatics"
+    links:
+      - { name: paper, url: "https://www.sciencedirect.com/science/article/pii/S1532046425001753" }
 
   - id: secure-embedding-aggregation
     year: 2025
@@ -130,6 +121,7 @@ papers:
     authors: ""
     venue: "IEEE Transactions on Information Forensics and Security"
     links:
+      - { name: paper, url: "https://ieeexplore.ieee.org/abstract/document/11037435" }
       - { name: preprint, url: "https://arxiv.org/abs/2206.09097" }
 
   - id: mtl-part1

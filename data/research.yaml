@@ -6,7 +6,7 @@
 themes:
   - title: "Pretraining"
     description: "Generalist vision–language models trained across biomedical modalities and tasks, released openly so they can be adapted rather than rebuilt."
-    papers: [biomedgpt, medgpt-oss]
+    papers: [biomedgpt, biomed-vlm-scaling, medgpt-oss]
 
   - title: "Post-training"
     description: "Reward models and reinforcement learning that steer a pretrained model toward clinically correct, not just fluent, outputs."
@@ -21,5 +21,5 @@ themes:
     papers: [radagents, radfabric]
 
   - title: "Security and safety"
-    description: "Attacks on, and defenses for, the federated and foundation-model pipelines that medical AI is trained and served through."
-    papers: [fedsecurity, backdoor-unified-fm]
+    description: "Federated learning that lets institutions train together without exposing their raw data or embeddings."
+    papers: [secure-embedding-aggregation, fedr]
