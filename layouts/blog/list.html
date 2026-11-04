@@ -1,0 +1,12 @@
+{{- define "main" }}
+<section>
+  <h2>{{ .Title }}</h2>
+  {{- with .RegularPages.ByDate.Reverse }}
+  <ul class="posts">
+    {{- range . }}{{ partial "post_entry.html" . }}{{ end }}
+  </ul>
+  {{- else }}
+  <p class="empty">No posts yet.</p>
+  {{- end }}
+</section>
+{{- end }}

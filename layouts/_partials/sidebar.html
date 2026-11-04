@@ -1,0 +1,14 @@
+{{- $p := site.Params.profile }}
+<aside class="side">
+  <div class="mono" aria-hidden="true">{{ $p.monogram }}</div>
+  <h1>{{ $p.name }}</h1>
+  {{- with $p.nativeName }}<p class="cn" lang="zh">{{ . }}</p>{{ end }}
+  <p class="role">{{ $p.role }}</p>
+  <p class="aff">{{ delimit $p.affiliation "<br>" | safeHTML }}</p>
+  <ul>
+    {{- range $c := $p.contacts }}
+    <li><span>{{ $c.label }}</span>{{ with $c.url }}<a href="{{ . }}" rel="me noopener" data-label="{{ $c.label }}">{{ $c.text }}</a>{{ else }}<span class="val">{{ $c.text }}</span>{{ end }}</li>
+    {{- end }}
+  </ul>
+  {{- with $p.education }}<p class="past">{{ . }}</p>{{ end }}
+</aside>

@@ -1,0 +1,31 @@
+{{- /* One publication. Context: a map from data/publications.yaml.
+       Authors: more than 6 → first 3, …, Kai Zhang (if not shown), …, last 2. */ -}}
+{{- $self := site.Params.selfName }}
+{{- $names := slice }}
+{{- range split (.authors | default "") "," }}{{ with strings.TrimSpace . }}{{ $names = $names | append . }}{{ end }}{{ end }}
+{{- $shown := $names }}
+{{- if gt (len $names) 6 }}
+  {{- $head := first 3 $names }}
+  {{- $tail := last 2 $names }}
+  {{- $isSelf := false }}
+  {{- range (union $head $tail) }}{{ if eq (strings.TrimRight "*" .) $self }}{{ $isSelf = true }}{{ end }}{{ end }}
+  {{- $shown = $head | append "…" }}
+  {{- if not $isSelf }}
+    {{- range $names }}{{ if eq (strings.TrimRight "*" .) $self }}{{ $shown = $shown | append . "…" }}{{ end }}{{ end }}
+  {{- end }}
+  {{- range $tail }}{{ $shown = $shown | append . }}{{ end }}
+{{- end }}
+<li class="pub">
+  <div class="venue"{{ with .venue }} title="{{ . }}"{{ end }}><b>{{ .label }}</b>{{ .year }}</div>
+  <div>
+    <p class="pt">{{ .title }}{{ with .note }}<span class="note">{{ . }}</span>{{ end }}</p>
+    {{- with $shown }}
+    <p class="au">
+      {{- range $i, $a := . }}{{ if $i }}, {{ end }}{{ if eq (strings.TrimRight "*" $a) $self }}<strong>{{ $a }}</strong>{{ else }}{{ $a }}{{ end }}{{ end -}}
+    </p>
+    {{- end }}
+    {{- with .links }}
+    <div class="links">{{ range . }}<a href="{{ .url }}">{{ .name }}</a>{{ end }}</div>
+    {{- end }}
+  </div>
+</li>

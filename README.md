@@ -1,20 +1,31 @@
 # taokz.github.io
 
-Personal site of Kai Zhang, built with [Hugo](https://gohugo.io/) and the
-[PaperMod](https://github.com/adityatelange/hugo-PaperMod) theme (git submodule),
-deployed to GitHub Pages by `.github/workflows/hugo.yml` on every push to `main`.
+Personal site of Kai Zhang, built with [Hugo](https://gohugo.io/) and deployed to
+GitHub Pages by `.github/workflows/hugo.yml` on every push to `main`.
+
+The layout, styles and head are the site's own (`layouts/`, `assets/css/site.css`),
+ported from the approved design prototype. The [PaperMod](https://github.com/adityatelange/hugo-PaperMod)
+theme (git submodule) still supplies RSS, robots.txt, the 404 page and shortcodes.
 
 ## Editing
 
 | What | Where |
 | --- | --- |
-| Name, title, header links (Email · Scholar · GitHub · X · CV) | `hugo.toml` → `[params.profile]` |
-| Research statement | `content/_index.md` (remove `statementPlaceholder` when done) |
-| Selected Research themes on the home page | `data/research.yaml` |
-| Full publication list | `data/publications.yaml` |
-| Posts | `content/writing/<slug>/index.md` |
-| CV | add `static/cv.pdf`, then uncomment the two CV entries in `hugo.toml` |
-| Styles | `assets/css/extended/custom.css` |
+| Sidebar: name, role, affiliation, contacts, degree | `hugo.toml` → `[params.profile]` |
+| Navigation | `hugo.toml` → `[menus]` |
+| About statement | `content/_index.md` |
+| Selected Publications (themes and papers on the home page) | `data/research.yaml` |
+| Publication data (authors, venues, links) | `data/publications.yaml` |
+| Blog posts | `content/blog/<slug>/index.md` |
+| Styles | `assets/css/site.css` |
+| Icon | `static/favicon.svg` |
+
+Author lists longer than six names are shortened on the page (first 3, …, Kai Zhang, …,
+last 2); keep the full list in `data/publications.yaml`.
+
+The `/publications/` page is switched off for now; see the note in
+`content/publications.md` to turn it back on. The CV link is hidden until
+`static/cv.pdf` exists; see the note in `hugo.toml`.
 
 A post's front matter:
 
@@ -22,8 +33,8 @@ A post's front matter:
 ---
 title: "Post title"
 date: 2026-11-04
-description: "One-line subtitle shown on /writing and the home page."
-# ShowToc: false     # TOC is on by default
+description: "One-line summary shown in the blog list and on the home page."
+# toc: false        # the table of contents is on by default
 # draft: true
 ---
 ```

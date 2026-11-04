@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <style>
+    .ink { fill: #1c2026; }
+    .bg { fill: #ffffff; stroke: #1c2026; }
+    @media (prefers-color-scheme: dark) { .ink { fill: #e6e8eb; } .bg { fill: #15181c; stroke: #e6e8eb; } }
+  </style>
+  <circle class="bg" cx="32" cy="32" r="30" stroke-width="2.5"/>
+  <text class="ink" x="32" y="33" text-anchor="middle" dominant-baseline="central"
+        font-family="Georgia, 'Times New Roman', serif" font-size="27" font-weight="600" letter-spacing="0.5">KZ</text>
+</svg>

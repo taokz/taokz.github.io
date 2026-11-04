@@ -1,0 +1,56 @@
+{{- /* Blog post: lilianweng-style long-form page. The identity sidebar is
+       replaced by a sticky table of contents; the reading column is wider. */ -}}
+{{- define "body" }}
+{{- $toc := and (ne .Params.toc false) (gt (len .Fragments.Headings) 0) }}
+<div class="wrap page post-page">
+  <aside class="toc-col">
+    {{- if $toc }}
+    <nav class="toc-side" aria-label="Contents">
+      <p class="toc-label">Contents</p>
+      {{ .TableOfContents }}
+    </nav>
+    {{- end }}
+  </aside>
+  <main>
+    <article>
+      <header class="post-head">
+        <p class="meta"><time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 2, 2006" }}</time><span>·</span><span>{{ .ReadingTime }} min read</span></p>
+        <h1>{{ .Title }}</h1>
+        {{- with .Description }}<p class="dek">{{ . }}</p>{{ end }}
+      </header>
+      {{- if $toc }}
+      <details class="toc-inline">
+        <summary>Contents</summary>
+        {{ .TableOfContents }}
+      </details>
+      {{- end }}
+      <div class="prose">
+        {{ .Content }}
+      </div>
+    </article>
+  </main>
+</div>
+{{- if $toc }}
+<script>
+/* Highlight the current section in the side table of contents. */
+(function () {
+  var links = document.querySelectorAll('.toc-side a[href^="#"]');
+  if (!links.length || !('IntersectionObserver' in window)) return;
+  var byId = {};
+  links.forEach(function (a) { byId[decodeURIComponent(a.getAttribute('href').slice(1))] = a; });
+  var current;
+  var obs = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      if (current) current.classList.remove('active');
+      current = byId[e.target.id];
+      if (current) current.classList.add('active');
+    });
+  }, { rootMargin: '0px 0px -70% 0px' });
+  document.querySelectorAll('.prose h2[id], .prose h3[id]').forEach(function (h) {
+    if (byId[h.id]) obs.observe(h);
+  });
+})();
+</script>
+{{- end }}
+{{- end }}
