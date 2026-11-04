@@ -5,7 +5,7 @@
 </header>
 {{- $posts := .RegularPages.ByDate.Reverse }}
 {{- if $posts }}
-<ul class="post-list post-list-full">
+<ul class="post-list">
   {{- range $posts }}{{ partial "post_row.html" . }}{{ end }}
 </ul>
 {{- else }}

@@ -67,6 +67,7 @@ disableKinds = ["taxonomy", "term"]
   [params.profile]
     name = "Kai Zhang"
     nativeName = "章愷"
+    # photo = "/images/profile.jpg"   # optional: put the file in static/images/; shown at the top right of the home page
     title = "Postdoctoral Scholar, Department of Radiation Oncology, Stanford University"
 
     # Plain-text links under the research statement, in this order.

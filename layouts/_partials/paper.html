@@ -1,18 +1,18 @@
 {{- /* One publication entry. Context: a map from data/publications.yaml. */ -}}
 {{- $self := site.Params.selfName | default "Kai Zhang" }}
-<li class="paper{{ if .placeholder }} is-placeholder{{ end }}">
-  <span class="paper-title">{{ .title }}</span>
-  {{- if .placeholder }} <span class="todo-tag">placeholder</span>{{ end }}
+<li class="pub-item">
+  <span class="pub-title">{{ .title }}</span>
   {{- with .authors }}
-  <span class="paper-authors">{{ replace (. | htmlEscape) $self (printf "<strong>%s</strong>" $self) | safeHTML }}</span>
+  <span class="pub-authors">{{ replace (. | htmlEscape) $self (printf "<strong>%s</strong>" $self) | safeHTML }}</span>
   {{- end }}
-  <span class="paper-meta">
-    {{- with .venue }}<em class="paper-venue">{{ . }}</em>{{ end }}
-    {{- with .note }}<span class="paper-note">, {{ . }}</span>{{ end }}
-    {{- with .links }}
-    <span class="paper-links">
-      {{- range $i, $l := . }}{{ if $i }}<span class="sep" aria-hidden="true"> · </span>{{ end }}<a href="{{ $l.url }}">{{ $l.name }}</a>{{ end }}
-    </span>
-    {{- end }}
+  <span class="pub-venue">
+    {{- with .venue }}<em>{{ . }}</em>{{ end }}{{ with .year }}, {{ . }}{{ end }}
+    {{- with .note }}<span class="pub-note"> · {{ . }}</span>{{ end }}
+    {{- if .placeholder }}<span class="pub-todo"> · details to come</span>{{ end }}
   </span>
+  {{- with where (.links | default slice) "url" "ne" "#" }}
+  <span class="pub-links">
+    {{- range $i, $l := . }}{{ if $i }}<span class="divider" aria-hidden="true">|</span>{{ end }}<a href="{{ $l.url }}">{{ $l.name }}</a>{{ end }}
+  </span>
+  {{- end }}
 </li>

@@ -1,6 +1,7 @@
 /* ==========================================================================
    Site styles layered on top of PaperMod.
-   Text-first, single ~640px column, serif body / sans headings & meta.
+   Layout ideas from rikiyat.github.io (home / publications) and
+   nrehiew.github.io (writing list, posts). Own CSS, not copied.
    ========================================================================== */
 
 :root {
@@ -8,42 +9,41 @@
     --sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
     --mono: ui-monospace, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
 
-    --main-width: 640px;
-    --nav-width: 640px;
+    --main-width: 720px;
+    --nav-width: 720px;
     --gap: 24px;
-    --content-gap: 1.25rem;
-    --radius: 4px;
+    --content-gap: 1.1rem;
+    --radius: 8px;
 
-    --theme: #fdfcf9;
-    --entry: #fdfcf9;
-    --primary: #1c1c1c;
-    --secondary: #6d6a65;
-    --tertiary: #d9d5ce;
-    --content: #262523;
-    --code-bg: #f1efea;
-    --code-block-bg: #f6f5f1;
-    --border: #e7e3dc;
-    --link: #3d5f78;
-    --link-hover: #1f3d55;
-    --placeholder: #a5671d;
+    --theme: #ffffff;
+    --entry: #ffffff;
+    --primary: #1f1f1f;
+    --secondary: #6c7380;
+    --tertiary: #b9bfca;
+    --content: #2b2b2b;
+    --code-bg: #eef0f3;
+    --code-block-bg: #f5f6f8;
+    --border: #e6e9ef;
+    --rule: #dfe3ea;
+    --link: #2f63b8;
+    --link-hover: #1d4689;
 }
 
 :root[data-theme="dark"] {
-    --theme: #161718;
-    --entry: #161718;
-    --primary: #e6e4df;
-    --secondary: #9a968f;
-    --tertiary: #3a3a3c;
-    --content: #d4d1cb;
-    --code-bg: #232427;
-    --code-block-bg: #1d1e21;
-    --border: #2c2d30;
-    --link: #93b3cb;
-    --link-hover: #bfd5e6;
-    --placeholder: #d9a35f;
+    --theme: #141518;
+    --entry: #141518;
+    --primary: #ececec;
+    --secondary: #9aa1ad;
+    --tertiary: #4a4f58;
+    --content: #d6d6d6;
+    --code-bg: #24262b;
+    --code-block-bg: #1c1e22;
+    --border: #2a2d33;
+    --rule: #30343b;
+    --link: #8fb4f0;
+    --link-hover: #b8d0f7;
 }
 
-/* PaperMod paints list pages grey; keep one background everywhere. */
 .list,
 [data-theme="dark"] .list {
     background: var(--theme);
@@ -51,19 +51,18 @@
 
 body {
     font-family: var(--serif);
-    font-size: 19px;
+    font-size: 18px;
     line-height: 1.65;
     color: var(--content);
     background: var(--theme);
-    font-feature-settings: "kern", "liga", "onum";
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
 }
 
 h1, h2, h3, h4, h5, h6,
 .header, .footer, .post-meta, .toc, .toc-side,
-.section-label, .theme-title, .post-row-date, .page-subtitle,
-.paper-links, .more-link, .todo-tag, .pub-year-label, .copy-code {
+.hero-title, .quick-links, .pub-links, .pub-venue, .post-row-date,
+.more-link, .page-subtitle, .copy-code {
     font-family: var(--sans);
 }
 
@@ -79,68 +78,63 @@ a {
 a:hover {
     color: var(--link-hover);
     text-decoration: underline;
-    text-decoration-thickness: 1px;
     text-underline-offset: 0.18em;
 }
 
-::selection {
-    background: color-mix(in srgb, var(--link) 22%, transparent);
-}
-
-.sep {
-    color: var(--tertiary);
-}
-
-/* ---- Header --------------------------------------------------------------- */
+/* ---- Header ------------------------------------------------------------- */
 
 .header-nav {
-    padding-top: 1.25rem;
-    line-height: 2.5rem;
+    padding-top: 1.75rem;
+    padding-bottom: 0.5rem;
+    line-height: 2.25rem;
 }
 
 .logo a {
-    font-size: 16px;
-    font-weight: 600;
+    font-size: 17px;
+    font-weight: 700;
     color: var(--primary);
-    letter-spacing: -0.005em;
+}
+
+.logo a:hover {
+    text-decoration: none;
 }
 
 #menu a {
-    font-size: 15px;
+    font-size: 15.5px;
+    font-weight: 500;
     color: var(--secondary);
 }
 
 #menu li + li {
-    margin-inline-start: 1.1rem;
+    margin-inline-start: 1.5rem;
 }
 
 #menu a:hover,
 #menu .active {
     color: var(--primary);
-    font-weight: 400;
     border-bottom: none;
     text-decoration: none;
 }
 
-/* ---- Main column ------------------------------------------------------------ */
+/* ---- Main column -------------------------------------------------------- */
 
 .main {
     min-height: calc(100vh - 9rem);
-    padding-top: 3rem;
-    padding-bottom: 4rem;
+    padding-top: 2.5rem;
+    padding-bottom: 3rem;
 }
 
 .page-header,
 .post-header {
-    margin: 0 0 2.5rem;
+    margin: 0 0 2rem;
 }
 
 .page-header h1,
 .post-title {
-    font-size: 2rem;
-    font-weight: 600;
+    font-size: 2.2rem;
+    font-weight: 700;
     line-height: 1.2;
-    letter-spacing: -0.015em;
+    letter-spacing: -0.02em;
     color: var(--primary);
 }
 
@@ -151,235 +145,248 @@ a:hover {
     color: var(--secondary);
 }
 
+.page-subtitle p {
+    margin: 0;
+}
+
 .post-description {
     font-family: var(--serif);
     font-style: italic;
     font-size: 1.1rem;
 }
 
-.page-subtitle p { margin: 0; }
-
 .post-meta {
-    margin-top: 0.75rem;
+    margin-top: 0.6rem;
     font-size: 14px;
     color: var(--secondary);
 }
 
-/* ---- Home -------------------------------------------------------------------- */
-
-.home-intro {
-    margin-bottom: 1.75rem;
+/* Section headings: bold, with a hairline that fades out to the right. */
+.section-heading {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin: 3rem 0 1.1rem;
+    font-size: 1.35rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    color: var(--primary);
 }
 
-.home-name {
-    font-size: 2.1rem;
-    font-weight: 600;
+.section-heading::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, var(--rule), transparent);
+}
+
+.more-link {
+    margin-top: 1rem;
+    font-size: 15px;
+}
+
+.divider {
+    margin: 0 0.5em;
+    color: var(--tertiary);
+}
+
+/* ---- Home --------------------------------------------------------------- */
+
+.hero::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+.hero-photo {
+    float: right;
+    width: clamp(140px, 26vw, 200px);
+    height: auto;
+    margin: 0.25rem 0 1rem 1.75rem;
+    border-radius: 10px;
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.10);
+}
+
+.hero-name {
+    font-size: 2.5rem;
+    font-weight: 700;
     line-height: 1.15;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.025em;
     color: var(--primary);
 }
 
 .native-name {
-    font-weight: 400;
+    font-weight: 500;
     color: var(--secondary);
     letter-spacing: 0;
 }
 
-.home-title {
-    margin-top: 0.5rem;
-    font-family: var(--sans);
-    font-size: 15px;
+.hero-title {
+    margin: 0.4rem 0 1.4rem;
+    font-size: 1rem;
+    font-weight: 600;
     color: var(--secondary);
 }
 
-.home-statement {
-    font-size: 1.05rem;
+.hero-statement {
+    font-size: 1.06rem;
+    line-height: 1.7;
 }
 
-.home-statement.is-placeholder {
+.hero-statement.is-placeholder {
     padding: 0.9rem 1.1rem;
-    border: 1px dashed var(--placeholder);
+    border: 1px dashed var(--tertiary);
     border-radius: var(--radius);
 }
 
-.home-links {
-    margin-top: 1.5rem;
-    font-family: var(--sans);
-    font-size: 15px;
-}
-
-.home-section {
-    margin-top: 4rem;
-}
-
-.section-label {
-    margin-bottom: 1.5rem;
-    font-size: 12px;
-    font-weight: 600;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--secondary);
+.quick-links {
+    margin: 1.25rem 0 0;
+    font-size: 15.5px;
+    font-weight: 500;
 }
 
 .research-theme + .research-theme {
-    margin-top: 2.25rem;
+    margin-top: 1.9rem;
 }
 
 .theme-title {
-    font-size: 1.02rem;
+    margin-bottom: 0.2rem;
+    font-size: 1.08rem;
     font-weight: 600;
     color: var(--primary);
 }
 
 .theme-desc {
-    margin: 0.2rem 0 1rem;
-    font-size: 0.95rem;
-    line-height: 1.55;
-    font-style: italic;
+    margin-bottom: 0.4rem;
+    font-size: 1rem;
     color: var(--secondary);
 }
 
-.more-link {
-    margin-top: 1.25rem;
-    font-size: 14px;
-}
+/* ---- Publications (home + /publications) -------------------------------- */
 
-/* ---- Papers (home + /publications) -------------------------------------------- */
-
-.paper-list {
+.pub-list {
     list-style: none;
-    padding: 0;
     margin: 0;
+    padding: 0;
 }
 
-.paper {
-    margin: 0 0 1.15rem;
+.pub-item {
+    padding: 0.85rem 0;
+    border-bottom: 1px solid var(--border);
     line-height: 1.5;
 }
 
-.paper > span:not(.todo-tag) {
+.pub-item:last-child {
+    border-bottom: none;
+}
+
+.pub-item > span {
     display: block;
 }
 
-.paper > .paper-title {
-    display: inline;
+.pub-title {
+    font-size: 1.04rem;
+    font-weight: 600;
     color: var(--primary);
 }
 
-.paper-authors {
-    margin-top: 0.15rem;
-    font-size: 0.86rem;
-    color: var(--secondary);
-}
-
-.paper-authors strong {
-    font-weight: 600;
+.pub-authors {
+    margin-top: 0.2rem;
+    font-size: 0.93rem;
     color: var(--content);
 }
 
-.paper-meta {
-    font-size: 0.86rem;
+.pub-authors strong {
+    font-weight: 700;
+    color: var(--primary);
+}
+
+.pub-venue {
+    margin-top: 0.1rem;
+    font-size: 14.5px;
     color: var(--secondary);
 }
 
-.paper-links {
-    font-size: 13.5px;
+.pub-venue em {
+    font-family: var(--serif);
+    font-size: 15.5px;
 }
 
-.paper-links::before {
-    content: "\00a0\00a0";
+.pub-todo {
+    font-style: italic;
 }
 
-.todo-tag {
-    display: inline-block;
-    margin-inline-start: 0.4rem;
-    padding: 0 0.4rem;
-    font-size: 11px;
+.pub-links {
+    margin-top: 0.15rem;
+    font-size: 14.5px;
     font-weight: 500;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    line-height: 1.6;
-    vertical-align: 0.15em;
-    color: var(--placeholder);
-    border: 1px dashed var(--placeholder);
-    border-radius: 3px;
 }
 
-.pub-year + .pub-year {
-    margin-top: 2.5rem;
-}
-
-.pub-year-label {
-    margin-bottom: 1rem;
-    padding-bottom: 0.35rem;
-    font-size: 14px;
-    font-weight: 600;
-    letter-spacing: 0.04em;
-    color: var(--secondary);
-    border-bottom: 1px solid var(--border);
-    font-variant-numeric: tabular-nums;
-}
-
-/* ---- Post lists (home + /writing) ---------------------------------------------- */
+/* ---- Post lists (home + /writing) --------------------------------------- */
 
 .post-list {
     list-style: none;
-    padding: 0;
     margin: 0;
+    padding: 0;
 }
 
-.post-row {
-    display: grid;
-    grid-template-columns: 5.5rem 1fr;
-    column-gap: 1.25rem;
+.post-row + .post-row {
+    margin-top: 0.4rem;
+}
+
+.post-row-link {
+    display: block;
+    padding: 0.45rem 0;
+    color: var(--content);
+}
+
+.post-row-link:hover {
+    color: var(--content);
+    text-decoration: none;
+    opacity: 0.75;
+}
+
+.post-row-head {
+    display: flex;
+    justify-content: space-between;
     align-items: baseline;
-    margin-bottom: 1.15rem;
-}
-
-.post-row-date {
-    font-size: 13px;
-    color: var(--secondary);
-    font-variant-numeric: tabular-nums;
-    white-space: nowrap;
+    gap: 1rem;
 }
 
 .post-row-title {
+    font-size: 1.06rem;
     color: var(--primary);
-    font-size: 1.05rem;
-    line-height: 1.4;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.2em;
+    text-decoration-color: var(--tertiary);
 }
 
-.post-row-title:hover {
-    color: var(--link-hover);
+.post-row-date {
+    flex-shrink: 0;
+    font-size: 14px;
+    font-style: italic;
+    color: var(--secondary);
+    font-variant-numeric: tabular-nums;
 }
 
 .post-row-subtitle {
     display: block;
-    margin-top: 0.1rem;
-    font-size: 0.92rem;
-    line-height: 1.5;
+    margin-top: 0.15rem;
+    font-size: 0.95rem;
+    font-style: italic;
     color: var(--secondary);
 }
 
-.post-list-full .post-row {
-    margin-bottom: 1.5rem;
+.empty {
+    color: var(--secondary);
 }
 
-@media (max-width: 520px) {
-    .post-row {
-        grid-template-columns: 1fr;
-    }
-    .post-row-date {
-        order: 2;
-        margin-top: 0.15rem;
-    }
-}
-
-/* ---- Post body ------------------------------------------------------------------ */
+/* ---- Post body ---------------------------------------------------------- */
 
 .post-content {
-    font-size: 19px;
-    line-height: 1.7;
+    font-size: 18px;
+    line-height: 1.72;
     color: var(--content);
 }
 
@@ -388,32 +395,34 @@ a:hover {
 .md-content h3,
 .md-content h4 {
     color: var(--primary);
-    font-weight: 600;
     line-height: 1.3;
     letter-spacing: -0.01em;
 }
 
 .md-content h2 {
-    margin: 2.75rem 0 1rem;
-    font-size: 1.45rem;
+    margin: 2.6rem 0 0.8rem;
+    font-size: 1.5rem;
+    font-weight: 700;
 }
 
 .md-content h3 {
-    margin: 2rem 0 0.75rem;
-    font-size: 1.15rem;
+    margin: 1.8rem 0 0.6rem;
+    font-size: 1.18rem;
+    font-weight: 600;
 }
 
 .md-content h4 {
-    margin: 1.5rem 0 0.5rem;
+    margin: 1.4rem 0 0.5rem;
     font-size: 1rem;
+    font-weight: 600;
 }
 
 .md-content a:not(.anchor) {
     color: var(--link);
     text-decoration: underline;
-    text-decoration-color: color-mix(in srgb, var(--link) 35%, transparent);
     text-decoration-thickness: 1px;
     text-underline-offset: 0.18em;
+    text-decoration-color: color-mix(in srgb, var(--link) 35%, transparent);
 }
 
 .md-content a:not(.anchor):hover {
@@ -426,37 +435,34 @@ a:hover {
 }
 
 .md-content blockquote {
-    margin: 1.5rem 0;
-    padding: 0 0 0 1.1rem;
-    border-inline-start: 2px solid var(--border);
+    margin: 1.4rem 0;
+    padding: 0 0 0 1rem;
+    border-inline-start: 3px solid var(--rule);
     color: var(--secondary);
 }
 
 .md-content hr {
-    margin: 2.5rem auto;
-    width: 4rem;
+    margin: 2.5rem 0;
     height: 1px;
     background: var(--border);
 }
 
 .md-content img {
     margin: 1.5rem auto;
-    border-radius: 2px;
+    border-radius: 6px;
 }
 
-.md-content figure figcaption,
 .md-content figcaption {
     margin-top: 0.5rem;
     font-family: var(--sans);
     font-size: 14px;
-    line-height: 1.5;
+    line-height: 1.45;
     color: var(--secondary);
     text-align: center;
 }
 
-/* Inline and block code */
 .post-content code {
-    font-size: 0.8em;
+    font-size: 0.82em;
     background: var(--code-bg);
     color: var(--primary);
 }
@@ -464,6 +470,9 @@ a:hover {
 .md-content .highlight:not(table),
 .md-content pre code {
     background: var(--code-block-bg) !important;
+}
+
+.md-content .highlight:not(table) {
     border: 1px solid var(--border);
 }
 
@@ -472,7 +481,6 @@ a:hover {
     font-size: 14.5px;
     line-height: 1.55;
     color: var(--content);
-    border: none;
 }
 
 .md-content .highlight pre,
@@ -485,48 +493,40 @@ a:hover {
     background: var(--code-bg);
 }
 
-/* Math (rendered at build time by KaTeX) */
 .post-content .katex {
     font-size: 1.05em;
 }
 
 .post-content .katex-display {
     margin: 1.5rem 0;
+    padding: 0.25rem 0;
     overflow-x: auto;
     overflow-y: hidden;
-    padding: 0.25rem 0;
 }
 
-/* Footnotes */
 .footnotes {
     margin-top: 3rem;
-    font-size: 0.88rem;
+    font-size: 0.9rem;
     line-height: 1.6;
     color: var(--secondary);
 }
 
 .footnotes hr {
-    width: 100%;
     margin: 0 0 1.25rem;
 }
 
-.footnote-ref a,
-a.footnote-ref {
-    font-family: var(--sans);
-    font-size: 0.75em;
-    text-decoration: none !important;
-}
-
+a.footnote-ref,
 .footnote-backref {
+    font-family: var(--sans);
     text-decoration: none !important;
 }
 
-/* ---- Table of contents ---------------------------------------------------------- */
+/* ---- Table of contents -------------------------------------------------- */
 
 details.toc {
-    margin-bottom: 2.25rem;
+    margin-bottom: 2rem;
     padding: 0.6rem 1rem;
-    font-size: 14px;
+    font-size: 14.5px;
     background: transparent;
     border: 1px solid var(--border);
     border-radius: var(--radius);
@@ -539,7 +539,6 @@ details.toc summary {
 
 details.toc .inner {
     margin: 0.5rem 0 0.25rem;
-    padding: 0 0.25rem;
 }
 
 .toc ul,
@@ -556,8 +555,8 @@ details.toc .inner {
 
 .toc li,
 .toc-side li {
-    margin: 0.3rem 0;
-    line-height: 1.4;
+    margin: 0.35rem 0;
+    line-height: 1.35;
 }
 
 .toc a,
@@ -569,38 +568,28 @@ details.toc .inner {
     display: none;
 }
 
-/* Wide screens: the TOC moves into the left margin and stays put while reading. */
-@media (min-width: 1200px) {
+/* Wide screens: the TOC sits in the left margin and stays put while reading. */
+@media (min-width: 1240px) {
     .toc-side {
         display: block;
         position: fixed;
-        top: 7.5rem;
-        left: calc(50% - var(--main-width) / 2 - 15rem - 3rem);
-        width: 15rem;
-        max-height: calc(100vh - 10rem);
+        top: 7rem;
+        left: calc(50% - var(--main-width) / 2 - 14rem - 2.5rem);
+        width: 14rem;
+        max-height: calc(100vh - 9rem);
         overflow-y: auto;
-        font-size: 13.5px;
-        line-height: 1.4;
+        font-size: 14px;
     }
 
     .toc-side-label {
         margin-bottom: 0.6rem;
-        font-size: 11px;
+        font-size: 13px;
         font-weight: 600;
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
-        color: var(--secondary);
+        color: var(--primary);
     }
 
-    .toc-side a {
-        display: block;
-        padding-inline-start: 0.75rem;
-        border-inline-start: 1px solid var(--border);
-    }
-
-    .toc-side ul ul a {
-        border-inline-start: none;
-        padding-inline-start: 0.75rem;
+    .toc-side > ul > li + li {
+        margin-top: 0.6rem;
     }
 
     .toc-side a:hover,
@@ -609,21 +598,29 @@ details.toc .inner {
         text-decoration: none;
     }
 
-    .toc-side > ul > li > a.active {
-        border-inline-start-color: var(--primary);
-    }
-
     details.toc {
         display: none;
     }
 }
 
-/* ---- Footer --------------------------------------------------------------------- */
+/* ---- Footer ------------------------------------------------------------- */
 
 .footer {
-    padding-bottom: 2.5rem;
-    font-size: 12.5px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 0.25rem 1rem;
+    max-width: calc(var(--main-width) - var(--gap) * 0);
+    margin: 0 auto 2rem;
+    padding: 1rem 0 0;
+    border-top: 1px solid var(--border);
+    font-size: 0; /* hides PaperMod's bare " · " text node between the spans */
     color: var(--secondary);
+    text-align: start;
+}
+
+.footer span {
+    font-size: 13px;
 }
 
 .footer a {
@@ -636,25 +633,49 @@ details.toc .inner {
 }
 
 .post-footer {
-    margin-top: 3rem;
+    margin-top: 2.5rem;
 }
 
-/* ---- Small screens -------------------------------------------------------------- */
+/* ---- Small screens ------------------------------------------------------ */
 
-@media (max-width: 640px) {
+@media (max-width: 760px) {
     :root {
-        --gap: 16px;
+        --gap: 18px;
     }
+
+    .footer {
+        margin-inline: var(--gap);
+    }
+}
+
+@media (max-width: 560px) {
     body,
     .post-content {
-        font-size: 18px;
+        font-size: 17px;
     }
+
     .main {
-        padding-top: 2rem;
+        padding-top: 1.5rem;
     }
-    .home-name,
+
+    .hero-name {
+        font-size: 2rem;
+    }
+
     .page-header h1,
     .post-title {
-        font-size: 1.7rem;
+        font-size: 1.8rem;
+    }
+
+    .hero-photo {
+        float: none;
+        display: block;
+        margin: 0 0 1.25rem;
+        width: 140px;
+    }
+
+    .post-row-head {
+        flex-direction: column;
+        gap: 0.1rem;
     }
 }

@@ -8,9 +8,9 @@
 {{- range $papers }}{{ $years = $years | append .year }}{{ end }}
 {{- range sort ($years | uniq) "value" "desc" }}
 {{- $y := . }}
-<section class="pub-year" aria-labelledby="y{{ $y }}">
-  <h2 class="pub-year-label" id="y{{ $y }}">{{ $y }}</h2>
-  <ul class="paper-list">
+<section aria-labelledby="y{{ $y }}">
+  <h2 class="section-heading" id="y{{ $y }}">{{ $y }}</h2>
+  <ul class="pub-list">
     {{- range where $papers "year" $y }}{{ partial "paper.html" . }}{{ end }}
   </ul>
 </section>
