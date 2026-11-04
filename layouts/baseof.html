@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+{{- partial "site_head.html" . }}
+</head>
+<body>
+{{- partial "masthead.html" . }}
+{{- block "body" . }}
+<div class="wrap page">
+  {{- partial "sidebar.html" . }}
+  <main>
+    {{- block "main" . }}{{ end }}
+  </main>
+</div>
+{{- end }}
+{{- partial "site_footer.html" . }}
+</body>
+</html>

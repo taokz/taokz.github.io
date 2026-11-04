@@ -1,18 +1,18 @@
 {{- define "main" }}
-<header class="page-header">
-  <h1>{{ .Title }}</h1>
-  {{- with .Content }}<div class="page-subtitle">{{ . }}</div>{{ end }}
-</header>
+<section>
+  <h2>{{ .Title }}</h2>
+  {{- with .Content }}<div class="intro">{{ . }}</div>{{ end }}
+</section>
 {{- $papers := hugo.Data.publications.papers }}
 {{- $years := slice }}
 {{- range $papers }}{{ $years = $years | append .year }}{{ end }}
 {{- range sort ($years | uniq) "value" "desc" }}
 {{- $y := . }}
-<section aria-labelledby="y{{ $y }}">
-  <h2 class="section-heading" id="y{{ $y }}">{{ $y }}</h2>
-  <ul class="pub-list">
-    {{- range where $papers "year" $y }}{{ partial "paper.html" . }}{{ end }}
+<div class="theme year" id="y{{ $y }}">
+  <h3>{{ $y }}</h3>
+  <ul class="pubs">
+    {{- range where $papers "year" $y }}{{ partial "pub_entry.html" . }}{{ end }}
   </ul>
-</section>
+</div>
 {{- end }}
 {{- end }}

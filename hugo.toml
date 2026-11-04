@@ -1,10 +1,11 @@
 baseURL = "https://taokz.github.io/"
 locale = "en-US"
 title = "Kai Zhang"
+# PaperMod supplies RSS, robots.txt, the 404 page and shortcodes. The page
+# layout, styles and head are this site's own (layouts/, assets/css/site.css).
 theme = "PaperMod"
-copyright = "© Kai Zhang"
 enableRobotsTXT = true
-# No tags/categories: the site is a homepage, a writing list, and a publication list.
+# No tags/categories: the site is a homepage, a blog and a publication list.
 disableKinds = ["taxonomy", "term"]
 
 [pagination]
@@ -16,81 +17,69 @@ disableKinds = ["taxonomy", "term"]
 
 [menus]
   [[menus.main]]
-    name = "Writing"
-    pageRef = "/writing"
+    name = "About"
+    pageRef = "/"
     weight = 10
+  # The /publications/ page is switched off for now (content/publications.md,
+  # build.render = never), so this goes to Selected Publications on the home page.
   [[menus.main]]
     name = "Publications"
-    pageRef = "/publications"
+    url = "/#research"
     weight = 20
-  # CV hidden until static/cv.pdf is added; uncomment to restore.
+  [[menus.main]]
+    name = "Blog"
+    pageRef = "/blog"
+    weight = 30
+  # CV is hidden until there is a file. To restore: add static/cv.pdf, then
   # [[menus.main]]
   #   name = "CV"
   #   url = "/cv.pdf"
-  #   weight = 30
+  #   weight = 40
 
 [params]
-  env = "production"
   description = "Kai Zhang — Postdoctoral Scholar, Department of Radiation Oncology, Stanford University."
   author = "Kai Zhang"
-  defaultTheme = "auto"        # follow the operating system
-  disableThemeToggle = true
-  disableScrollToTop = true
-  DateFormat = "January 2, 2006"
-
-  # Post pages
-  ShowToc = true
-  TocOpen = false
-  UseHugoToc = true
-  ShowReadingTime = false
-  ShowWordCount = false
-  ShowBreadCrumbs = false
-  ShowShareButtons = false
-  ShowPostNavLinks = false
-  ShowCodeCopyButtons = true
   ShowFullTextinRSS = true
-  hideAuthor = true
 
-  # Used to bold your name in author lists (data/publications.yaml).
+  # Bolded in every author list (data/publications.yaml).
   selfName = "Kai Zhang"
 
-  [params.assets]
-    favicon = "/favicon.ico"
-    favicon16x16 = "/favicon-16x16.png"
-    favicon32x32 = "/favicon-32x32.png"
-    apple_touch_icon = "/apple-touch-icon.png"
+  # "All publications →" on the home page. Change to "/publications/" when
+  # that page is switched back on.
+  allPublicationsURL = "https://scholar.google.com/citations?user=XL1iKSEAAAAJ"
 
-  [params.label]
-    text = "Kai Zhang"
+  # Footer
+  location = "Stanford, California"
 
-  # Home page header ----------------------------------------------------------
+  # Sidebar ---------------------------------------------------------------
   [params.profile]
     name = "Kai Zhang"
     nativeName = "章愷"
-    # photo = "/images/profile.jpg"   # optional: put the file in static/images/; shown at the top right of the home page
-    title = "Postdoctoral Scholar, Department of Radiation Oncology, Stanford University"
+    monogram = "KZ"
+    role = "Postdoctoral Scholar"
+    affiliation = ["Department of Radiation Oncology", "Stanford University"]
 
-    # Plain-text links under the research statement, in this order.
-    [[params.profile.links]]
-      name = "Email"
-      url = "mailto:zkai@stanford.edu"
-    [[params.profile.links]]
-      name = "Scholar"
+    # Contact rows: label on the left, value on the right. Rows without a
+    # url are shown as plain text (the email address).
+    [[params.profile.contacts]]
+      label = "Email"
+      text = "zkai@stanford.edu"
+    [[params.profile.contacts]]
+      label = "Scholar"
+      text = "Google Scholar"
       url = "https://scholar.google.com/citations?user=XL1iKSEAAAAJ"
-    [[params.profile.links]]
-      name = "GitHub"
+    [[params.profile.contacts]]
+      label = "GitHub"
+      text = "taokz"
       url = "https://github.com/taokz"
-    [[params.profile.links]]
-      name = "X"
+    [[params.profile.contacts]]
+      label = "X"
+      text = "@kai_z99"
       url = "https://x.com/kai_z99"
-    # CV hidden until static/cv.pdf is added; uncomment to restore.
-    # [[params.profile.links]]
-    #   name = "CV"
-    #   url = "/cv.pdf"
 
 [markup]
   [markup.highlight]
-    noClasses = false        # use the CSS in assets/css/includes/chroma-styles.css
+    noClasses = false        # colours come from assets/css/site.css
     lineNos = false
     codeFences = true
     guessSyntax = false

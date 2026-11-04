@@ -1,57 +1,39 @@
 {{- define "main" }}
-{{- $p := site.Params.profile }}
-<article class="home">
-  <header class="hero">
-    {{- with $p.photo }}
-    <img class="hero-photo" src="{{ . | relURL }}" alt="{{ $p.name }}" width="200" height="200">
-    {{- end }}
-    <h1 class="hero-name">{{ $p.name }}{{ with $p.nativeName }} <span class="native-name" lang="zh">{{ . }}</span>{{ end }}</h1>
-    <p class="hero-title">{{ $p.title }}</p>
-  </header>
+<section id="about">
+  <h2>About</h2>
+  <div class="lede">{{ .Content }}</div>
+</section>
 
-  <div class="hero-statement md-content{{ if .Params.statementPlaceholder }} is-placeholder{{ end }}">
-    {{- .Content }}
-  </div>
-
-  {{- with $p.links }}
-  <p class="quick-links">
-    {{- range $i, $l := . }}{{ if $i }}<span class="divider" aria-hidden="true">|</span>{{ end }}<a href="{{ $l.url }}"{{ if hasPrefix $l.url "http" }} rel="me noopener"{{ end }}>{{ $l.name }}</a>{{ end }}
-  </p>
-  {{- end }}
-
-  {{- with hugo.Data.research.themes }}
-  <section aria-labelledby="selected-research">
-    <h2 class="section-heading" id="selected-research">Selected Research</h2>
-    {{- range . }}
-    <div class="research-theme">
-      <h3 class="theme-title">{{ .title }}</h3>
-      {{- with .description }}<p class="theme-desc">{{ . | markdownify }}</p>{{ end }}
-      <ul class="pub-list">
-        {{- range $id := .papers }}
-        {{- with where hugo.Data.publications.papers "id" $id }}
-        {{- partial "paper.html" (index . 0) }}
-        {{- else }}
-        {{- warnf "data/research.yaml: no paper with id %q in data/publications.yaml" $id }}
-        {{- end }}
-        {{- end }}
-      </ul>
-    </div>
-    {{- end }}
-    <p class="more-link"><a href="{{ "publications/" | relURL }}">All publications →</a></p>
-  </section>
-  {{- end }}
-
-  {{- $posts := where site.RegularPages "Section" "writing" }}
-  {{- with $posts }}
-  <section aria-labelledby="recent-writing">
-    <h2 class="section-heading" id="recent-writing">Writing</h2>
-    <ul class="post-list">
-      {{- range first 3 .ByDate.Reverse }}{{ partial "post_row.html" . }}{{ end }}
+{{- with hugo.Data.research.themes }}
+<section id="research">
+  <h2>Selected Publications <a href="{{ site.Params.allPublicationsURL }}">All publications →</a></h2>
+  {{- range . }}
+  <div class="theme">
+    <h3>{{ .title }}</h3>
+    {{- with .description }}<p>{{ . }}</p>{{ end }}
+    <ul class="pubs">
+      {{- range $id := .papers }}
+      {{- with where hugo.Data.publications.papers "id" $id }}
+      {{- partial "pub_entry.html" (index . 0) }}
+      {{- else }}
+      {{- errorf "data/research.yaml: no paper with id %q in data/publications.yaml" $id }}
+      {{- end }}
+      {{- end }}
     </ul>
-    {{- if gt (len .) 3 }}
-    <p class="more-link"><a href="{{ "writing/" | relURL }}">All writing →</a></p>
-    {{- end }}
-  </section>
+  </div>
   {{- end }}
-</article>
+</section>
+{{- end }}
+
+{{- $posts := where site.RegularPages "Section" "blog" }}
+<section id="blog">
+  <h2>Blog{{ with $posts }} <a href="{{ "blog/" | relURL }}">All posts →</a>{{ end }}</h2>
+  {{- with $posts }}
+  <ul class="posts">
+    {{- range first 3 .ByDate.Reverse }}{{ partial "post_entry.html" . }}{{ end }}
+  </ul>
+  {{- else }}
+  <p class="empty">No posts yet.</p>
+  {{- end }}
+</section>
 {{- end }}

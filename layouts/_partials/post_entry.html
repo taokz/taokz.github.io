@@ -1,0 +1,6 @@
+{{- /* One blog post in a list. Context: a page. */ -}}
+<li class="post">
+  <p class="meta"><span>{{ .Date.Format "Jan 2006" }}</span><span>·</span><span>{{ .ReadingTime }} min read</span></p>
+  <h4><a href="{{ .RelPermalink }}">{{ .Title }}</a></h4>
+  {{- with .Description }}<p>{{ . }}</p>{{ end }}
+</li>
