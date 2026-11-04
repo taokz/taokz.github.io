@@ -1,0 +1,25 @@
+# "Selected Research" on the home page, organised along the lifecycle of a
+# medical foundation model: pretrain → post-train → evaluate → deploy → secure.
+# Each stage: a one-sentence description and 1–3 paper ids from
+# data/publications.yaml. Descriptions are drafts — rewrite them in your own words.
+
+themes:
+  - title: "Pretraining"
+    description: "Generalist vision–language models trained across biomedical modalities and tasks, released openly so they can be adapted rather than rebuilt."
+    papers: [biomedgpt, biomed-vlm-scaling, medgpt-oss]
+
+  - title: "Post-training"
+    description: "Reward models and reinforcement learning that steer a pretrained model toward clinically correct, not just fluent, outputs."
+    papers: [medjudge, editgrpo]
+
+  - title: "Evaluation"
+    description: "Task-grounded tests of frontier models on real multimodal diagnosis, to find where general capability does and does not become clinical reliability."
+    papers: [gpt5-medical-agent, gpt4v-comparative]
+
+  - title: "Deployment: agentic systems"
+    description: "Multi-agent systems that work through images, reports, and clinical context the way radiologists do, with intermediate steps a clinician can inspect."
+    papers: [radagents, radfabric]
+
+  - title: "Security and safety"
+    description: "Federated learning that lets institutions train together without exposing their raw data or embeddings."
+    papers: [secure-embedding-aggregation, fedr]

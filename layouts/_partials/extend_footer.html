@@ -1,0 +1,25 @@
+{{- if eq .Kind "page" }}
+<script>
+/* Highlight the current section in the side table of contents. */
+(function () {
+  var links = document.querySelectorAll('.toc-side a[href^="#"]');
+  if (!links.length || !('IntersectionObserver' in window)) return;
+  var byId = {};
+  links.forEach(function (a) { byId[decodeURIComponent(a.getAttribute('href').slice(1))] = a; });
+  var heads = Array.prototype.filter.call(
+    document.querySelectorAll('.post-content h2[id], .post-content h3[id]'),
+    function (h) { return byId[h.id]; });
+  var current;
+  var obs = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) {
+        if (current) current.classList.remove('active');
+        current = byId[e.target.id];
+        current.classList.add('active');
+      }
+    });
+  }, { rootMargin: '0px 0px -70% 0px' });
+  heads.forEach(function (h) { obs.observe(h); });
+})();
+</script>
+{{- end }}

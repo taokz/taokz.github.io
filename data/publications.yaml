@@ -1,0 +1,362 @@
+# Full publication list. Rendered on /publications (grouped by year, in the order
+# listed here) and referenced by id from data/research.yaml on the home page.
+#
+# Fields
+#   id        unique slug, used by data/research.yaml
+#   year      integer
+#   title     paper title
+#   authors   comma-separated; "Kai Zhang" is bolded automatically (params.selfName).
+#             Mark equal contribution with "*" (e.g. "Kai Zhang*"). Leave empty to hide.
+#   venue     shown in italics
+#   note      optional, shown after the venue (e.g. "Oral")
+#   links     list of {name, url}; rendered as "paper · code · …"
+#   placeholder: true  → shows a small "placeholder" marker until you fill it in
+#
+# Most entries were imported from Google Scholar, which does not provide author
+# lists; fill in `authors` as you go.
+
+papers:
+  # ---------------------------------------------------------------- 2026
+  - id: radagents
+    year: 2026
+    title: "RadAgents: Multimodal Agentic Reasoning for Chest X-ray Interpretation with Radiologist-like Workflows"
+    authors: ""   # TODO: author list
+    venue: "Medical Imaging with Deep Learning (MIDL)"
+    links:
+      - { name: paper, url: "https://proceedings.mlr.press/v315/zhang26b.html" }
+
+  - id: radfabric
+    year: 2026
+    # Published version of RadFabric. Title from Google Scholar — check it
+    # against the article page.
+    title: "Interpretable Agentic AI System with Localized Reasoning for Radiology"
+    authors: ""   # TODO: author list
+    venue: "npj Digital Medicine"
+    links:
+      - { name: paper, url: "https://www.nature.com/articles/s41746-026-02994-8" }
+
+  - id: gpt5-medical-agent
+    year: 2026
+    title: "The Complexity Paradox of Generalist AI Agents in Medicine: Exploring GPT-5 for Real-World Multimodal Medical Diagnosis"
+    authors: "TODO — author list"
+    venue: "npj Digital Medicine"
+    links:
+      - { name: paper, url: "#" }   # TODO
+    placeholder: true
+
+  - id: gpt4v-comparative
+    year: 2026
+    title: "Evaluating GPT-4V for Multi-modal Medical Applications: A Comparative Study Using Open-source Datasets"
+    authors: ""
+    venue: "IEEE Transactions on Radiation and Plasma Medical Sciences"
+
+  - id: ttt-unet
+    year: 2026
+    title: "TTT-UNet: Enhancing U-Net with Test-Time Training Layers for Biomedical Image Segmentation"
+    authors: ""
+    venue: "Medical Imaging with Deep Learning (MIDL)"
+    links:
+      - { name: paper, url: "https://arxiv.org/abs/2409.11299" }
+      - { name: code, url: "https://github.com/rongzhou7/TTT-Unet" }
+
+  - id: medjudge
+    year: 2026
+    title: "MedJudge: Medical Multimodal Reward Modeling"
+    authors: ""
+    venue: "ACM SIGKDD Conference on Knowledge Discovery and Data Mining (KDD)"
+
+  - id: eip
+    year: 2026
+    title: "EIP: Weighted Ranking of LLMs by Quantifying Question Difficulty"
+    authors: ""
+    venue: "International Conference on Learning Representations (ICLR)"
+
+  - id: darkness-to-detail
+    year: 2026
+    title: "From Darkness to Detail: Frequency-Aware SSMs for Low-Light Vision"
+    authors: ""
+    venue: "IEEE/CVF Winter Conference on Applications of Computer Vision (WACV)"
+
+  - id: beyond-affinity
+    year: 2026
+    title: "Beyond Affinity: A Benchmark of 1D, 2D, and 3D Methods Reveals Critical Trade-offs in Structure-Based Drug Design"
+    authors: ""
+    venue: "Transactions on Machine Learning Research (TMLR)"
+
+  - id: medgpt-oss
+    year: 2026
+    title: "MedGPT-oss: Training a General-Purpose Vision-Language Model for Biomedicine"
+    authors: ""
+    venue: "arXiv preprint"
+    links:
+      - { name: paper, url: "https://arxiv.org/abs/2603.00842" }
+
+  # ---------------------------------------------------------------- 2025
+  - id: pfm-survey
+    year: 2025
+    title: "A Comprehensive Survey on Pretrained Foundation Models: A History from BERT to ChatGPT"
+    authors: ""
+    venue: "International Journal of Machine Learning and Cybernetics"
+    links:
+      - { name: paper, url: "https://arxiv.org/abs/2302.09419" }
+
+  - id: editgrpo
+    year: 2025
+    title: "EditGRPO: Reinforcement Learning with Post-Rollout Edits for Clinically Accurate Chest X-ray Report Generation"
+    authors: ""
+    venue: "International Joint Conference on Natural Language Processing (IJCNLP-AACL)"
+    note: "Oral"
+
+  - id: biomed-vlm-scaling
+    year: 2025
+    title: "Scaling Up Biomedical Vision-Language Models: Fine-Tuning, Instruction Tuning, and Multi-Modal Learning"
+    authors: ""
+    venue: "Journal of Biomedical Informatics"
+    links:
+      - { name: paper, url: "https://www.sciencedirect.com/science/article/pii/S1532046425001753" }
+
+  - id: secure-embedding-aggregation
+    year: 2025
+    title: "Secure Embedding Aggregation for Cross-Silo Federated Representation Learning"
+    authors: ""
+    venue: "IEEE Transactions on Information Forensics and Security"
+    links:
+      - { name: paper, url: "https://ieeexplore.ieee.org/abstract/document/11037435" }
+      - { name: preprint, url: "https://arxiv.org/abs/2206.09097" }
+
+  - id: mtl-part1
+    year: 2025
+    title: "Multitask Learning 1997–2024: Part I Fundamentals"
+    authors: ""
+    venue: "Harvard Data Science Review"
+
+  - id: mtl-part3
+    year: 2025
+    title: "Multitask Learning 1997–2024: Part III Applications"
+    authors: ""
+    venue: "Harvard Data Science Review"
+
+  - id: visual-rag
+    year: 2025
+    title: "Reducing Hallucinations of Medical Multimodal Large Language Models with Visual Retrieval-Augmented Generation"
+    authors: ""
+    venue: "arXiv preprint"
+    links:
+      - { name: paper, url: "https://arxiv.org/abs/2502.15040" }
+
+  - id: fact-or-guesswork
+    year: 2025
+    title: "Fact or Guesswork? Evaluating Large Language Models' Medical Knowledge with Structured One-Hop Judgments"
+    authors: ""
+    venue: "arXiv preprint"
+    links:
+      - { name: paper, url: "https://arxiv.org/abs/2502.14275" }
+
+  # ---------------------------------------------------------------- 2024
+  - id: biomedgpt
+    year: 2024
+    title: "A Generalist Vision–Language Foundation Model for Diverse Biomedical Tasks"
+    authors: "Kai Zhang, Rong Zhou, Eashan Adhikarla, Zhiling Yan, Yixin Liu, Jun Yu, Zhengliang Liu, Xun Chen, Brian D. Davison, Hui Ren, Jing Huang, Chen Chen, Yuyin Zhou, Sunyang Fu, Wei Liu, Tianming Liu, Xiang Li, Yong Chen, Lifang He, James Zou, Quanzheng Li, Hongfang Liu, Lichao Sun"
+    venue: "Nature Medicine"
+    links:
+      - { name: paper, url: "https://www.nature.com/articles/s41591-024-03185-2" }
+      - { name: code, url: "https://github.com/taokz/BiomedGPT" }
+
+  - id: fedsecurity
+    year: 2024
+    title: "FedSecurity: A Benchmark for Attacks and Defenses in Federated Learning and Federated LLMs"
+    authors: ""
+    venue: "ACM SIGKDD Conference on Knowledge Discovery and Data Mining (KDD)"
+    links:
+      - { name: paper, url: "https://arxiv.org/abs/2306.04959" }
+
+  - id: sora-review
+    year: 2024
+    title: "Sora: A Review on Background, Technology, Limitations, and Opportunities of Large Vision Models"
+    authors: ""
+    venue: "arXiv preprint"
+    links:
+      - { name: paper, url: "https://arxiv.org/abs/2402.17177" }
+
+  - id: mtl-survey
+    year: 2024
+    title: "Unleashing the Power of Multi-Task Learning: A Comprehensive Survey Spanning Traditional, Deep, and Pretrained Foundation Model Eras"
+    authors: ""
+    venue: "arXiv preprint"
+    links:
+      - { name: paper, url: "https://arxiv.org/abs/2404.18961" }
+
+  - id: biomedical-sam2
+    year: 2024
+    title: "Biomedical SAM 2: Segment Anything in Biomedical Images and Videos"
+    authors: ""
+    venue: "AIM-FM Workshop at NeurIPS"
+    links:
+      - { name: paper, url: "https://arxiv.org/abs/2408.03286" }
+      - { name: code, url: "https://github.com/ZhilingYan/Biomedical-SAM-2" }
+
+  - id: expomamba
+    year: 2024
+    title: "ExpoMamba: Exploiting Frequency SSM Blocks for Efficient and Effective Image Enhancement"
+    authors: ""
+    venue: "Workshop on Efficient Systems for Foundation Models II at ICML"
+
+  - id: unified-egformer
+    year: 2024
+    title: "Unified-EGformer: Exposure Guided Lightweight Transformer for Mixed-Exposure Image Enhancement"
+    authors: ""
+    venue: "International Conference on Pattern Recognition (ICPR)"
+
+  # ---------------------------------------------------------------- 2023
+  - id: graph-adversarial-survey
+    year: 2023
+    title: "Adversarial Attack and Defense on Graph Data: A Survey"
+    authors: "Lichao Sun, Yingtong Dou, Carl Yang, Kai Zhang, Ji Wang, Philip S. Yu, Lifang He, Bo Li"
+    venue: "IEEE Transactions on Knowledge and Data Engineering (TKDE)"
+    links:
+      - { name: paper, url: "https://ieeexplore.ieee.org/document/9878092" }
+      - { name: code, url: "https://github.com/safe-graph/graph-adversarial-learning-literature" }
+
+  - id: fedepth
+    year: 2023
+    title: "Memory-adaptive Depth-wise Heterogeneous Federated Learning"
+    authors: "Kai Zhang, Yutong Dai, Hongyi Wang, Eric Xing, Xun Chen, Lichao Sun"
+    venue: "Federated Learning Systems (FLSys) Workshop at MLSys"
+    links:
+      - { name: paper, url: "https://arxiv.org/abs/2303.04887" }
+      - { name: code, url: "https://github.com/taokz/FeDepth" }
+
+  - id: holistic-gpt4v
+    year: 2023
+    title: "Holistic Evaluation of GPT-4V for Biomedical Imaging"
+    authors: ""
+    venue: "arXiv preprint"
+    links:
+      - { name: paper, url: "https://arxiv.org/abs/2312.05256" }
+
+  - id: radiology-nlp-llm
+    year: 2023
+    title: "Evaluating Large Language Models for Radiology Natural Language Processing"
+    authors: ""
+    venue: "arXiv preprint"
+    links:
+      - { name: paper, url: "https://arxiv.org/abs/2307.13693" }
+
+  - id: backdoor-unified-fm
+    year: 2023
+    title: "Backdoor Attacks to Pre-trained Unified Foundation Models"
+    authors: ""
+    venue: "arXiv preprint"
+    links:
+      - { name: paper, url: "https://arxiv.org/abs/2302.09360" }
+
+  - id: robust-cv-survey
+    year: 2023
+    title: "Robust Computer Vision in an Ever-Changing World: A Survey of Techniques for Tackling Distribution Shifts"
+    authors: ""
+    venue: "arXiv preprint"
+    links:
+      - { name: paper, url: "https://arxiv.org/abs/2312.01540" }
+
+  - id: anti-learning-perturbation
+    year: 2023
+    title: "Securing Biomedical Images from Unauthorized Training with Anti-Learning Perturbation"
+    authors: ""
+    venue: "NDSS Symposium"
+    note: "Poster"
+    links:
+      - { name: paper, url: "https://arxiv.org/abs/2303.02559" }
+
+  # ---------------------------------------------------------------- 2022
+  - id: fedr
+    year: 2022
+    title: "Efficient Federated Learning on Knowledge Graphs via Privacy-preserving Relation Embedding Aggregation"
+    authors: "Kai Zhang, Yu Wang, Hongyi Wang, Lifu Huang, Carl Yang, Xun Chen, Lichao Sun"
+    venue: "Findings of EMNLP"
+    links:
+      - { name: paper, url: "https://aclanthology.org/2022.findings-emnlp.43/" }
+      - { name: code, url: "https://github.com/taokz/FedR" }
+
+  - id: air-mobility-graph
+    year: 2022
+    title: "Spatial–Temporal Graph Data Mining for IoT-Enabled Air Mobility Prediction"
+    authors: ""
+    venue: "IEEE Internet of Things Journal"
+
+  - id: phased-flight-trajectory
+    year: 2022
+    title: "Phased Flight Trajectory Prediction with Deep Learning"
+    authors: ""
+    venue: "arXiv preprint"
+    links:
+      - { name: paper, url: "https://arxiv.org/abs/2203.09033" }
+
+  - id: greeneyes
+    year: 2022
+    title: "GreenEyes: An Air Quality Evaluating Model based on WaveNet"
+    authors: ""
+    venue: "arXiv preprint"
+    links:
+      - { name: paper, url: "https://arxiv.org/abs/2212.04175" }
+
+  # ---------------------------------------------------------------- 2021
+  - id: uav-swarm-surveillance
+    year: 2021
+    title: "Communication Aware UAV Swarm Surveillance Based on Hierarchical Architecture"
+    authors: ""
+    venue: "Drones"
+
+  - id: fed-variational-anomaly
+    year: 2021
+    title: "Federated Variational Learning for Anomaly Detection in Multivariate Time Series"
+    authors: ""
+    venue: "IEEE International Performance, Computing, and Communications Conference (IPCCC)"
+
+  - id: learning-to-detect
+    year: 2021
+    title: "Learning to Detect: A Data-driven Approach for Network Intrusion Detection"
+    authors: ""
+    venue: "IEEE International Performance, Computing, and Communications Conference (IPCCC)"
+
+  - id: learning-to-dispatch
+    year: 2021
+    title: "Learning-to-Dispatch: Reinforcement Learning Based Flight Planning under Emergency"
+    authors: ""
+    venue: "IEEE International Intelligent Transportation Systems Conference (ITSC)"
+
+  - id: air-traffic-evacuation
+    year: 2021
+    title: "Machine Learning-Enabled Adaptive Air Traffic Recommendation System for Disaster Evacuation"
+    authors: ""
+    venue: "IEEE/AIAA Digital Avionics Systems Conference (DASC)"
+
+  - id: airspace-trust
+    year: 2021
+    title: "Trust of Airspace Configuration Transition Concerning the Fluctuation of Air Traffic"
+    authors: ""
+    venue: "IEEE/AIAA Digital Avionics Systems Conference (DASC)"
+
+  # ---------------------------------------------------------------- 2020
+  - id: uav-ddqn
+    year: 2020
+    title: "Autonomous UAV Navigation in Dynamic Environments with Double Deep Q-Networks"
+    authors: ""
+    venue: "AIAA/IEEE Digital Avionics Systems Conference (DASC)"
+
+  - id: aviation-delay
+    year: 2020
+    title: "Spatio-Temporal Data Mining for Aviation Delay Prediction"
+    authors: ""
+    venue: "IEEE International Performance, Computing, and Communications Conference (IPCCC)"
+
+  - id: airspace-capacity
+    year: 2020
+    title: "Tree-based Airspace Capacity Estimation"
+    authors: ""
+    venue: "Integrated Communications, Navigation and Surveillance Conference (ICNS)"
+
+  - id: uav-formation-dqn
+    year: 2020
+    title: "UAV Swarm Communication Aware Formation Control via Deep Q Network"
+    authors: ""
+    venue: "IEEE International Performance, Computing, and Communications Conference (IPCCC)"
