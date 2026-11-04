@@ -1,25 +1,25 @@
 # "Selected Research" on the home page, organised along the lifecycle of a
 # medical foundation model: pretrain → post-train → evaluate → deploy → secure.
-# Each stage: a one-sentence description and 1–3 paper ids from
-# data/publications.yaml. Descriptions are drafts — rewrite them in your own words.
+# Each stage: a one-sentence description of published work and 1–3 paper ids
+# from data/publications.yaml.
 
 themes:
   - title: "Pretraining"
-    description: "Generalist vision–language models trained across biomedical modalities and tasks, released openly so they can be adapted rather than rebuilt."
-    papers: [biomedgpt, biomed-vlm-scaling, medgpt-oss]
+    description: "Vision–language models pretrained and fine-tuned on biomedical data, so one model can handle images and text across many tasks."
+    papers: [biomedgpt, biomed-vlm-scaling]
 
   - title: "Post-training"
-    description: "Reward models and reinforcement learning that steer a pretrained model toward clinically correct, not just fluent, outputs."
+    description: "Reward models and reinforcement learning that make medical model outputs, such as chest X-ray reports, more clinically accurate."
     papers: [medjudge, editgrpo]
 
   - title: "Evaluation"
-    description: "Task-grounded tests of frontier models on real multimodal diagnosis, to find where general capability does and does not become clinical reliability."
+    description: "Testing GPT-5 and GPT-4V on multimodal medical diagnosis to measure where general-purpose models hold up and where they fail."
     papers: [gpt5-medical-agent, gpt4v-comparative]
 
   - title: "Deployment: agentic systems"
-    description: "Multi-agent systems that work through images, reports, and clinical context the way radiologists do, with intermediate steps a clinician can inspect."
+    description: "Agent systems for radiology image interpretation that follow radiologist-like workflows and show their reasoning, localized on the image."
     papers: [radagents, radfabric]
 
   - title: "Security and safety"
-    description: "Federated learning that lets institutions train together without exposing their raw data or embeddings."
+    description: "Federated learning methods that let institutions train shared models without exposing raw data or embeddings to each other."
     papers: [secure-embedding-aggregation, fedr]

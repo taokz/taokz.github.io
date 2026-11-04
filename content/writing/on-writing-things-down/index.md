@@ -3,6 +3,7 @@ title: "On Writing Things Down"
 date: 2026-11-04
 description: "A placeholder post — why this page exists, and what will go here."
 math: true
+draft: true   # hidden until a real post replaces it
 ---
 
 *This is a placeholder post. It exists so the writing page is not empty, and so

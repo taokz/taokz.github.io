@@ -31,7 +31,7 @@ disableKinds = ["taxonomy", "term"]
 
 [params]
   env = "production"
-  description = "Kai Zhang — Postdoctoral Researcher, Department of Radiation Oncology, Stanford University."
+  description = "Kai Zhang — Postdoctoral Scholar, Department of Radiation Oncology, Stanford University."
   author = "Kai Zhang"
   defaultTheme = "auto"        # follow the operating system
   disableThemeToggle = true
@@ -67,12 +67,12 @@ disableKinds = ["taxonomy", "term"]
   [params.profile]
     name = "Kai Zhang"
     nativeName = "章愷"
-    title = "Postdoctoral Researcher, Department of Radiation Oncology, Stanford University"
+    title = "Postdoctoral Scholar, Department of Radiation Oncology, Stanford University"
 
     # Plain-text links under the research statement, in this order.
     [[params.profile.links]]
       name = "Email"
-      url = "mailto:kaz321@lehigh.edu"   # TODO: replace with your Stanford address
+      url = "mailto:zkai@stanford.edu"
     [[params.profile.links]]
       name = "Scholar"
       url = "https://scholar.google.com/citations?user=XL1iKSEAAAAJ"
