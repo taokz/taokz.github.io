@@ -13,7 +13,7 @@ deployed to GitHub Pages by `.github/workflows/hugo.yml` on every push to `main`
 | Selected Research themes on the home page | `data/research.yaml` |
 | Full publication list | `data/publications.yaml` |
 | Posts | `content/writing/<slug>/index.md` |
-| CV | add `static/cv.pdf` |
+| CV | add `static/cv.pdf`, then uncomment the two CV entries in `hugo.toml` |
 | Styles | `assets/css/extended/custom.css` |
 
 A post's front matter:

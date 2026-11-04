@@ -23,10 +23,11 @@ disableKinds = ["taxonomy", "term"]
     name = "Publications"
     pageRef = "/publications"
     weight = 20
-  [[menus.main]]
-    name = "CV"
-    url = "/cv.pdf"
-    weight = 30
+  # CV hidden until static/cv.pdf is added; uncomment to restore.
+  # [[menus.main]]
+  #   name = "CV"
+  #   url = "/cv.pdf"
+  #   weight = 30
 
 [params]
   env = "production"
@@ -81,9 +82,10 @@ disableKinds = ["taxonomy", "term"]
     [[params.profile.links]]
       name = "X"
       url = "https://x.com/kai_z99"
-    [[params.profile.links]]
-      name = "CV"
-      url = "/cv.pdf"                    # TODO: add static/cv.pdf
+    # CV hidden until static/cv.pdf is added; uncomment to restore.
+    # [[params.profile.links]]
+    #   name = "CV"
+    #   url = "/cv.pdf"
 
 [markup]
   [markup.highlight]
